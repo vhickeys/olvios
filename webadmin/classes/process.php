@@ -80,6 +80,57 @@ if (isset($_GET['action'])) {
             }
             break;
 
+        case 'create-post':
+            if (isset($_POST['submit-post'])) {
+                $title = $_POST['title'];
+                $slug = textToSlug($title);
+                $category = $_POST['category'];
+                $caption = $_POST['caption'];
+                $quote = $_POST['quote'];
+
+                $description = $_POST['description'];
+                $image = $_FILES['image'];
+                $meta_title = $_POST['meta_title'];
+                $meta_keywords = $_POST['meta_keywords'];
+                $meta_description = $_POST['meta_description'];
+
+                $status = $_POST['status'] == true ? '1' : '0';
+                $author = $_POST['author'];
+
+                $blog->createPost($title, $slug, $category, $caption, $quote, $description, $image, $meta_title, $meta_keywords, $meta_description, $status, $author);
+            }
+            break;
+
+        case 'edit-post':
+            if (isset($_POST['update-post'])) {
+                $post_id = $_POST['post_id'];
+                $title = $_POST['title'];
+                $slug = textToSlug($title);
+                $category = $_POST['category'];
+                $caption = $_POST['caption'];
+                $quote = $_POST['quote'];
+
+                $description = $_POST['description'];
+                $image = $_FILES['image'];
+                $old_image = $_POST['old_image'];
+                $meta_title = $_POST['meta_title'];
+                $meta_keywords = $_POST['meta_keywords'];
+                $meta_description = $_POST['meta_description'];
+
+                $status = $_POST['status'] == true ? '1' : '0';
+                $author = $_POST['author'];
+
+                $blog->editPost($post_id, $title, $slug, $category, $caption, $quote, $description, $image, $old_image, $meta_title, $meta_keywords, $meta_description, $status, $author);
+            }
+            break;
+
+        case 'delete-post':
+            if (isset($_POST['delete-post'])) {
+                $post_id = $_POST['postModalId'];
+                $blog->deletePost($post_id);
+            }
+            break;
+
         case 'create-category':
             if (isset($_POST['submit-category'])) {
 

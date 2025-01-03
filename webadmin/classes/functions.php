@@ -5,6 +5,7 @@ date_default_timezone_set('Africa/lagos');
 require 'Database.php';
 require 'User.php';
 require 'AboutMe.php';
+require 'Blog.php';
 require 'Category.php';
 require 'Portfolio.php';
 require 'Product.php';
@@ -18,6 +19,8 @@ $database = new Database();
 $user = new User($database);
 
 $aboutMe = new AboutMe($database);
+
+$blog = new Blog($database);
 
 $category = new Category($database);
 

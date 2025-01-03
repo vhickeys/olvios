@@ -253,6 +253,9 @@ $(document).ready(function () {
   // Delete Product
   confirmDelete("delete-product", "deleteProductModal", "productModalId");
 
+  // Delete Post
+  confirmDelete("delete-post", "deletePostModal", "postModalId");
+
   // Change User Role
   confirmDelete("change-role", "changeUserRoleModal", "userId");
 

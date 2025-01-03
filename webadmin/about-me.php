@@ -98,6 +98,14 @@ $about_me = $aboutMe->getproductById("1");
                                         <input type="number" name="clients_worldwide" value="<?= $about_me['clients_worldwide'] ?? '' ?>" class="form-control" placeholder="Enter Number of Clients Worked With">
                                     </div>
                                 </div>
+
+                                <div class="mb-3 row">
+                                    <label class="col-sm-3 col-form-label">What I Do?:</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-txtarea form-control" name="what_i_do"
+                                            rows="5" placeholder="What I Do?"><?= $about_me['what_i_do'] ?? '' ?></textarea>
+                                    </div>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -109,13 +117,6 @@ $about_me = $aboutMe->getproductById("1");
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
-                            <div class="mb-3 row">
-                                <label class="col-form-label">What I Do?:</label>
-                                <div class="col-sm-12">
-                                    <textarea class="form-txtarea form-control" name="what_i_do"
-                                        rows="5" placeholder="What I Do?"><?= $about_me['what_i_do'] ?? '' ?></textarea>
-                                </div>
-                            </div>
 
                             <div class="mb-3 row">
                                 <label class="col-form-label">My Image:</label>
