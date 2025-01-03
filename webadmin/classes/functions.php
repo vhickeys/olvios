@@ -223,22 +223,22 @@ function resume_processing($file)
     }
 }
 
-function move_image($filename, $image_tmp_name)
+function move_my_uploaded_file($temporary_name, $destination_path)
 {
-    $destination = "../../images/events/$filename";
-    move_uploaded_file($image_tmp_name, $destination);
+    $destination = "$destination_path";
+    move_uploaded_file($temporary_name, $destination);
 }
 
-function unlink_image($old_image, $filename, $image_tmp_name)
+function unlink_and_move($old_file_path, $destination_path, $temporary_name)
 {
-    $olDestination = "../../images/events/$old_image";
+    $old_destination = "$old_file_path";
 
-    if (file_exists($olDestination)) {
-        unlink($olDestination);
+    if (file_exists($old_destination)) {
+        unlink($old_destination);
     }
 
-    $destination = "../../images/events/$filename";
-    move_uploaded_file($image_tmp_name, $destination);
+    $destination = "$destination_path";
+    move_uploaded_file($temporary_name, $destination);
 }
 
 function unlink_image_only($path)

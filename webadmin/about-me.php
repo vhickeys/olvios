@@ -10,6 +10,8 @@ include_once('components/nav-header.php');
 include_once('components/header.php');
 include_once('components/sidebar.php');
 
+$about_me = $aboutMe->getproductById("1");
+
 ?>
 
 <!--**********************************
@@ -51,49 +53,49 @@ include_once('components/sidebar.php');
                                 <div class="mb-3 row">
                                     <label class="col-sm-3 col-form-label">Name:</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="name" class="form-control" placeholder="Enter Name">
+                                        <input type="text" name="name" value="<?= $about_me['name'] ?? '' ?>" class="form-control" placeholder="Enter Name">
                                     </div>
                                 </div>
 
                                 <div class="mb-3 row">
                                     <label class="col-sm-3 col-form-label">Role:</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="role" class="form-control" placeholder="Enter Your Role/Position">
+                                        <input type="text" name="role" value="<?= $about_me['role'] ?? '' ?>" class="form-control" placeholder="Enter Your Role/Position">
                                     </div>
                                 </div>
 
                                 <div class="mb-3 row">
                                     <label class="col-sm-3 col-form-label">Intro Title:</label>
                                     <div class="col-sm-9">
-                                        <textarea class="form-txtarea form-control" name="intro_title" placeholder="Enter Intro Title" rows="3" id=""></textarea>
+                                        <textarea class="form-txtarea form-control" name="intro_title" placeholder="Enter Intro Title" rows="3" id=""><?= $about_me['intro_title'] ?? '' ?></textarea>
                                     </div>
                                 </div>
 
                                 <div class="mb-3 row">
                                     <label class="col-sm-3 col-form-label">Intro Text:</label>
                                     <div class="col-sm-9">
-                                        <textarea class="form-txtarea form-control" name="intro_text" placeholder="Enter Intro Text" rows="3" id=""></textarea>
+                                        <textarea class="form-txtarea form-control" name="intro_text" placeholder="Enter Intro Text" rows="3" id=""><?= $about_me['intro_text'] ?? '' ?></textarea>
                                     </div>
                                 </div>
 
                                 <div class="mb-3 row">
                                     <label class="col-sm-3 col-form-label">Years of Experience:</label>
                                     <div class="col-sm-9">
-                                        <input type="number" name="years_of_experience" class="form-control" placeholder="Enter Years of Experience">
+                                        <input type="number" name="years_of_experience" value="<?= $about_me['years_of_experience'] ?? '' ?>" class="form-control" placeholder="Enter Years of Experience">
                                     </div>
                                 </div>
 
                                 <div class="mb-3 row">
                                     <label class="col-sm-3 col-form-label">Projects Completed:</label>
                                     <div class="col-sm-9">
-                                        <input type="number" name="projects_completed" class="form-control" placeholder="Enter Number of Projects Completed">
+                                        <input type="number" name="projects_completed" value="<?= $about_me['projects_completed'] ?? '' ?>" class="form-control" placeholder="Enter Number of Projects Completed">
                                     </div>
                                 </div>
 
                                 <div class="mb-3 row">
                                     <label class="col-sm-3 col-form-label">Clients Worldwide:</label>
                                     <div class="col-sm-9">
-                                        <input type="number" name="clients_worldwide" class="form-control" placeholder="Enter Number of Clients Worked With">
+                                        <input type="number" name="clients_worldwide" value="<?= $about_me['clients_worldwide'] ?? '' ?>" class="form-control" placeholder="Enter Number of Clients Worked With">
                                     </div>
                                 </div>
                         </div>
@@ -110,8 +112,8 @@ include_once('components/sidebar.php');
                             <div class="mb-3 row">
                                 <label class="col-form-label">What I Do?:</label>
                                 <div class="col-sm-12">
-                                    <textarea class="form-txtarea form-control" name="description"
-                                        rows="5" placeholder="Description"></textarea>
+                                    <textarea class="form-txtarea form-control" name="what_i_do"
+                                        rows="5" placeholder="What I Do?"><?= $about_me['what_i_do'] ?? '' ?></textarea>
                                 </div>
                             </div>
 
@@ -119,21 +121,42 @@ include_once('components/sidebar.php');
                                 <label class="col-form-label">My Image:</label>
                                 <div class="col-sm-12">
                                     <input class="form-control" name="image" type="file" id="">
+
+                                    <input class="form-control" name="old_image"
+                                        value="<?= $about_me['image'] ?? 'No Record' ?>" type="hidden">
                                 </div>
+
+                                <?php if ($about_me['image'] != '') :   ?>
+                                    <div class="mt-3">
+
+                                        <img src="../assets/images/aboutMe/<?= $about_me['image'] ?: 'profile.png'; ?>"
+                                            alt="<?= $about_me['intro_text']; ?>" class="img-fluid" width="20%">
+
+                                    </div>
+                                <?php endif; ?>
                             </div>
 
                             <div class="mb-3 row">
                                 <label class="col-form-label">My Resume:</label>
                                 <div class="col-sm-12">
                                     <input class="form-control" name="resume" type="file" id="">
+
+                                    <input class="form-control" name="old_resume"
+                                        value="<?= $about_me['resume'] ?? 'No Record' ?>" type="hidden">
                                 </div>
+
+                                <?php if ($about_me['image'] != '') :   ?>
+                                    <div class="mt-3">
+                                        <a href="../assets/images/aboutMe/<?= $about_me['resume'] ?>"><button type="button" class="btn btn-info">View Resume</button></a>
+                                    </div>
+                                <?php endif; ?>
                             </div>
 
                             <div class="mb-3 row">
                                 <div class="col-sm-3">Status:</div>
                                 <div class="col-sm-9">
                                     <div class="form-check">
-                                        <input class="form-check-input" name="status" type="checkbox">
+                                        <input <?= $about_me['status'] == 1 ? 'checked' : '' ?> class="form-check-input" name="status" type="checkbox">
                                         <label class="form-check-label text-danger">
                                             Hidden (This will hide this from displaying on the website)
                                         </label>

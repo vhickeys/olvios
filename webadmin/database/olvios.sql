@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2025 at 12:36 PM
+-- Generation Time: Jan 03, 2025 at 02:51 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -39,8 +39,16 @@ CREATE TABLE `about_me` (
   `what_i_do` text NOT NULL,
   `image` varchar(255) NOT NULL,
   `resume` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `about_me`
+--
+
+INSERT INTO `about_me` (`id`, `name`, `role`, `intro_title`, `intro_text`, `years_of_experience`, `projects_completed`, `clients_worldwide`, `what_i_do`, `image`, `resume`, `status`, `date`) VALUES
+(1, 'Victor Osaronwafor', 'Software Developer', 'HI, I\'M A FREELANCER', 'I\'m a software engineer specializing in scalable web apps. Explore my blog, project portfolio and online resume.', 5, 50, 30, 'I have more than 10 years\' experience building software for clients all over the world. Below is a quick overview of my main technical skill sets and technologies I use. Want to find out more about my experience? Check out my  online resume and project portfolio.', '677741b87875d.jpg', '677741d361096.pdf', 0, '2025-01-03 01:48:48');
 
 -- --------------------------------------------------------
 
@@ -300,7 +308,7 @@ ALTER TABLE `visitors`
 -- AUTO_INCREMENT for table `about_me`
 --
 ALTER TABLE `about_me`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `categories`

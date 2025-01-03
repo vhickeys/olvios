@@ -69,11 +69,14 @@ if (isset($_GET['action'])) {
                 $years_of_experience = $_POST['years_of_experience'];
                 $projects_completed = $_POST['projects_completed'];
                 $clients_worldwide = $_POST['clients_worldwide'];
+                $what_i_do = $_POST['what_i_do'];
                 $image = $_FILES['image'];
+                $old_image = $_POST['old_image'];
                 $resume = $_FILES['resume'];
+                $old_resume = $_POST['old_resume'];
                 $status = $_POST['status'] == true ? '1' : '0';
 
-                $aboutMe->aboutMe($name, $role, $intro_title, $intro_text, $years_of_experience, $projects_completed, $clients_worldwide, $image, $resume, $status);
+                $aboutMe->aboutMe($name, $role, $intro_title, $intro_text, $years_of_experience, $projects_completed, $clients_worldwide, $what_i_do, $image, $old_image, $resume, $old_resume, $status);
             }
             break;
 
