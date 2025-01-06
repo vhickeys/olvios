@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2025 at 02:51 AM
+-- Generation Time: Jan 06, 2025 at 05:04 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -48,7 +48,7 @@ CREATE TABLE `about_me` (
 --
 
 INSERT INTO `about_me` (`id`, `name`, `role`, `intro_title`, `intro_text`, `years_of_experience`, `projects_completed`, `clients_worldwide`, `what_i_do`, `image`, `resume`, `status`, `date`) VALUES
-(1, 'Victor Osaronwafor', 'Software Developer', 'HI, I\'M A FREELANCER', 'I\'m a software engineer specializing in scalable web apps. Explore my blog, project portfolio and online resume.', 5, 50, 30, 'I have more than 10 years\' experience building software for clients all over the world. Below is a quick overview of my main technical skill sets and technologies I use. Want to find out more about my experience? Check out my  online resume and project portfolio.', '677741b87875d.jpg', '677741d361096.pdf', 0, '2025-01-03 01:48:48');
+(1, 'Victor Osaronwafor', 'Software Developer', 'HI, I\'M A FREELANCER', 'I\'m a software engineer specializing in scalable web apps. Explore my blog, project portfolio and online resume', 5, 50, 30, 'I have more than 10 years\' experience building software for clients all over the world. Below is a quick overview of my main technical skill sets and technologies I use. Want to find out more about my experience? Check out my  online resume and project portfolio. ', '6777c108086d9.png', '677741d361096.pdf', 0, '2025-01-03 01:48:48');
 
 -- --------------------------------------------------------
 
@@ -141,6 +141,38 @@ INSERT INTO `portfolios` (`id`, `category_id`, `title`, `slug`, `caption`, `desc
 (1, 5, 'Dmy Foodplug Ecommerce Website ', 'dmy-foodplug-ecommerce-website', 'Amazing ecommerce website', 'Dmy Foodplug is an e foodstore that is designed to sell products to customers easily!', '67674a5414714.png', 'Dammy', 'Website Development, Database Design ', 'HTML, CSS, React, Laravel ', 'www.dmyfoodplug.com', '2024-11-30', '2 month', 'Dmy Foodplug Ecommerce Website', 'ertert', 'ertertert', 0, 'Olvios', '2024-12-17 04:20:12'),
 (2, 2, 'Uncle Tees Restaurant', 'uncle-tees-restaurant', 'Uncle Tees Restaurant Prototype', 'Uncle Tees Restaurant Prototype Design made using figma', '67616e69e3d2a.png', 'Uncle Tee', 'Graphic Design, UI/UX', 'Adobe XD, Adobe Photoshop', 'www.uncletee.com', '2023-02-17', '2 Weeks', 'Uncle Tees Restaurant', 'Uncle Tees, Restaurant Prototype,', 'Uncle Tees Restaurant Prototype Design made using figma', 0, 'Olvios', '2024-12-17 04:28:25'),
 (3, 2, 'DigiL Hub', 'digil-hub', 'DigiL Hub Learning Prototype', 'DigiL Hub Learning Prototype Design made using Adobe XD', '', 'Goldamz', 'Graphic Design, UI/UX', 'Adobe XD, Adobe Photoshop', '', '2024-01-25', '1 Week', 'DigiL Hub Learning Prototype', 'DigiL Hub Learning Prototype', 'DigiL Hub Learning Prototype Design made using Adobe XD', 0, 'Olvios', '2024-12-17 04:33:16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `category` varchar(255) NOT NULL,
+  `caption` text NOT NULL,
+  `quote` text NOT NULL,
+  `description` longtext NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `meta_title` varchar(255) NOT NULL,
+  `meta_keywords` text NOT NULL,
+  `meta_description` text NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `author` varchar(255) NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `title`, `slug`, `category`, `caption`, `quote`, `description`, `image`, `meta_title`, `meta_keywords`, `meta_description`, `status`, `author`, `date`) VALUES
+(1, 'Why Every Developer Should Have A Blog', '', 'Article', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.', 'You might not think that programmers are artists, but programming is an extremely creative profession. It\'s logic-based creativity.\r\n~ John Romero', 'Typography\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit lobortis arcu enim urna adipiscing praesent velit viverra sit semper lorem eu cursus vel hendrerit elementum morbi curabitur etiam nibh justo, lorem aliquet donec sed sit mi dignissim at ante massa mattis.\r\n\r\nBullet Points:\r\nLorem ipsum dolor sit amet, consectetuer.\r\nAenean commodo ligula eget dolor.\r\nEtiam ultricies nisi vel augue.\r\nQuote Example:\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit lobortis arcu enim urna adipiscing praesent velit viverra sit semper lorem eu cursus vel hendrerit elementum morbi curabitur etiam nibh justo, lorem aliquet donec sed sit mi dignissim at ante massa mattis.\r\n\r\nBullet Points:\r\nLorem ipsum dolor sit amet, consectetuer.\r\nAenean commodo ligula eget dolor.\r\nEtiam ultricies nisi vel augue.', '6777bb58c80d1.png', 'Why Every Developer Should Have A Blog', 'Blog, Why, Why Every Developer Should Have A Blog', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.', 1, 'Olvios', '2025-01-03 11:26:32'),
+(2, 'How to Optimize your Website for Better Performance', 'how-to-optimize-your-website-for-better-performance', 'Tutorial', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.\r\n\r\nCode Block Example\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit lobortis arcu enim urna adipiscing praesent velit viverra sit semper lorem eu cursus vel hendrerit elementum morbi curabitur etiam nibh justo, lorem aliquet donec sed sit mi dignissim at ante massa mattis.\r\n', 'You might not think that programmers are artists, but programming is an extremely creative profession. It\'s logic-based creativity.\r\nJohn Romero', 'Typography\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit lobortis arcu enim urna adipiscing praesent velit viverra sit semper lorem eu cursus vel hendrerit elementum morbi curabitur etiam nibh justo, lorem aliquet donec sed sit mi dignissim at ante massa mattis.\r\n\r\nBullet Points:\r\nLorem ipsum dolor sit amet, consectetuer.\r\nAenean commodo ligula eget dolor.\r\nEtiam ultricies nisi vel augue.\r\nQuote Example:\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit lobortis arcu enim urna adipiscing praesent velit viverra sit semper lorem eu cursus vel hendrerit elementum morbi curabitur etiam nibh justo, lorem aliquet donec sed sit mi dignissim at ante massa mattis.\r\n\r\nBullet Points:\r\nLorem ipsum dolor sit amet, consectetuer.\r\nAenean commodo ligula eget dolor.\r\nEtiam ultricies nisi vel augue.\r\nYou might not think that programmers are artists, but programming is an extremely creative profession. It\'s logic-based creativity.\r\nJohn Romero\r\nVideo Example\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit lobortis arcu enim urna adipiscing praesent velit viverra sit semper lorem eu cursus vel hendrerit elementum morbi curabitur etiam nibh justo, lorem aliquet donec sed sit mi dignissim at ante massa mattis.', '6777c0665c127.png', 'Why Every Developer Should Have A Blog', 'Why, Every, Developer, Blog', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.\r\n\r\nCode Block Example\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit lobortis arcu enim urna adipiscing praesent velit viverra sit semper lorem eu cursus vel hendrerit elementum morbi curabitur etiam nibh justo, lorem aliquet donec sed sit mi dignissim at ante massa mattis.\r\n', 0, 'Olvios', '2025-01-03 11:48:06'),
+(3, '5 Great Web Frameworks to Learn in 2025', '5-great-web-frameworks-to-learn-in-2025', 'Article', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.  Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.\r\n\r\nCode Block Example\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit lobortis arcu enim urna adipiscing praesent velit viverra sit semper lorem eu cursus vel hendrerit elementum morbi curabitur etiam nibh justo, lorem aliquet donec sed sit mi dignissim at ante massa mattis.', 'You might not think that programmers are artists, but programming is an extremely creative profession. It\'s logic-based creativity.\r\nJohn Romero', 'Typography\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit lobortis arcu enim urna adipiscing praesent velit viverra sit semper lorem eu cursus vel hendrerit elementum morbi curabitur etiam nibh justo, lorem aliquet donec sed sit mi dignissim at ante massa mattis.\r\n\r\nBullet Points:\r\nLorem ipsum dolor sit amet, consectetuer.\r\nAenean commodo ligula eget dolor.\r\nEtiam ultricies nisi vel augue.\r\nQuote Example:\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit lobortis arcu enim urna adipiscing praesent velit viverra sit semper lorem eu cursus vel hendrerit elementum morbi curabitur etiam nibh justo, lorem aliquet donec sed sit mi dignissim at ante massa mattis.\r\n\r\nBullet Points:\r\nLorem ipsum dolor sit amet, consectetuer.\r\nAenean commodo ligula eget dolor.\r\nEtiam ultricies nisi vel augue.', '6777d8e4da853.png', '5 Great Web Frameworks to Learn in 2025', 'Blog, Olvios', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.\r\n\r\nCode Block Example\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit lobortis arcu enim urna adipiscing praesent velit viverra sit semper lorem eu cursus vel hendrerit elementum morbi curabitur etiam nibh justo, lorem aliquet donec sed sit mi dignissim at ante massa mattis.', 0, 'Olvios', '2025-01-03 11:49:38');
 
 -- --------------------------------------------------------
 
@@ -239,7 +271,8 @@ INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `role`, `access`, `
 CREATE TABLE `visitors` (
   `id` int(11) NOT NULL,
   `ip_address` varchar(1000) NOT NULL,
-  `page_url` varchar(255) NOT NULL
+  `page_url` varchar(255) NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -274,6 +307,12 @@ ALTER TABLE `payments`
 -- Indexes for table `portfolios`
 --
 ALTER TABLE `portfolios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -333,6 +372,12 @@ ALTER TABLE `payments`
 --
 ALTER TABLE `portfolios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `products`
