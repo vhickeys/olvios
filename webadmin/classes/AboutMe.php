@@ -147,8 +147,20 @@ class AboutMe
     }
 
 
-    public function getproductById($id)
+    public function getAboutMe()
     {
+        $id = '1';
+        $sql = "SELECT * FROM about_me WHERE id=? LIMIT 1";
+        $statement = $this->db->prepare($sql);
+        $statement->bindParam(1, $id, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result ?: [];
+    }
+
+    public function getAboutMeDetails()
+    {
+        $id = '1';
         $sql = "SELECT * FROM about_me WHERE id=? LIMIT 1";
         $statement = $this->db->prepare($sql);
         $statement->bindParam(1, $id, PDO::PARAM_INT);

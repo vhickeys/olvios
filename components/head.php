@@ -1,3 +1,34 @@
+<?php
+require_once 'webadmin/classes/functions.php';
+$getAboutMe = $aboutMe->getAboutMe();
+$categories = $category->getCategoriesByStatus("categories", "0");
+$allPortfolios = $portfolio->getAllPortfolios();
+$allProducts = $product->getAllProducts();
+$featuredProjects = $portfolio->getPortfolioLimit("6");
+$blogPosts = $blog->getBlogPosts("3");
+
+$portfolio_details = $portfolio->getPortfolioBySlugStatus($_GET['portId'] ?? '');
+$product_details = $product->getProductBySlugStatus($_GET['prodId'] ?? '');
+$blog_post_details = $blog->getPostBySlugStatus($_GET['read'] ?? '');
+
+if ($portfolio_details != [] || $product_details != [] || $blog_post_details != []) {
+  if (isset($portfolio_details['meta_title']) && isset($portfolio_details['meta_keywords']) && isset($portfolio_details['meta_description'])) {
+    $title = $portfolio_details['meta_title'];
+    $keywords = $portfolio_details['meta_keywords'];
+    $meta_description = $portfolio_details['meta_description'];
+  } else if (isset($product_details['meta_title']) && isset($product_details['meta_keywords']) && isset($product_details['meta_description'])) {
+    $title = $product_details['meta_title'];
+    $keywords = $product_details['meta_keywords'];
+    $meta_description = $product_details['meta_description'];
+  } else if (isset($blog_post_details['meta_title']) && isset($blog_post_details['meta_keywords']) && isset($blog_post_details['meta_description'])) {
+    $title = $blog_post_details['meta_title'];
+    $keywords = $blog_post_details['meta_keywords'];
+    $meta_description = $blog_post_details['meta_description'];
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,11 +40,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- #keywords -->
-  <meta name="keywords" content="boot, Bootstrap, Protfolily HTML Template" />
+  <meta name="keywords"
+    content="<?= $keywords ?? 'Portfolio, Software Developer, Graphic Designer, Website Developer, Coder, Artist, Pianist, Youtuber, Gravics Designs, Victor Osaronwafor - Portfolio' ?> | Olvios" />
   <!-- #description -->
-  <meta name="description" content="Protfolily - Responsive Personal Portfolio & Resume HTML Template" />
+  <meta name="description" content="<?= $meta_description ?? 'Victor Osaronwafor - Portfolio' ?> | Olvios" />
   <!-- #title -->
-  <title>Portfolify - Personal Portfolio & Resume HTML Template</title>
+  <title>
+    <?= $title ?? 'Victor Osaronwafor' ?> | Victor Osaronwafor
+  </title>
   <!-- #favicon -->
   <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon" />
   <!-- ==== css dependencies start ==== -->
@@ -61,3 +95,6 @@
     <div class="loader-section section-right"></div>
   </div>
   <!-- preloder  end -->
+
+
+  <div class="d-flex gap-6">

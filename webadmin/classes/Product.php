@@ -179,23 +179,28 @@ class Product
         return $result ?: [];
     }
 
-    public function getPackagesStatus($table = "packages")
+    public function getProductBySlugStatus($slug)
     {
-        $sql = "SELECT * FROM $table WHERE status=0 ORDER BY date DESC";
+        $status = 0;
+        $sql = "SELECT * FROM products WHERE slug=? AND status=?";
         $statement = $this->db->prepare($sql);
+        $statement->bindParam(1, $slug, PDO::PARAM_STR);
+        $statement->bindParam(2, $status, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result ?: [];
+    }
+    public function getRelatedProducts($id, $slug, $limit)
+    {
+        $status = 0;
+        $sql = "SELECT * FROM products WHERE category_id=? AND slug !=? AND status=? LIMIT $limit";
+        $statement = $this->db->prepare($sql);
+        $statement->bindParam(1, $id, PDO::PARAM_INT);
+        $statement->bindParam(2, $slug, PDO::PARAM_STR);
+        $statement->bindParam(3, $status, PDO::PARAM_INT);
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $result ?: [];
-    }
-
-    public function getLatestPackage($table = "packages")
-    {
-        $sql = "SELECT * FROM $table WHERE status=0 ORDER BY date DESC LIMIT 1";
-        $statement = $this->db->prepare($sql);
-        $statement->execute();
-        $result = $statement->fetch(PDO::FETCH_ASSOC);
-
-        return $result ?: null;
     }
 
     public function deleteProduct($product_id)
@@ -241,6 +246,30 @@ class Product
         $statement->bindParam(1, $id, PDO::PARAM_INT);
         $statement->execute();
         $result = $statement->fetch(PDO::FETCH_ASSOC);
-        return $result ?: null;
+        return $result ?: [];
     }
+
+    public function getProductByCatId($id)
+    {
+        $status = 0;
+        $sql = "SELECT * FROM products WHERE category_id=? AND status=? ORDER BY date DESC";
+        $statement = $this->db->prepare($sql);
+        $statement->bindParam(1, $id, PDO::PARAM_INT);
+        $statement->bindParam(2, $status, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result ?: [];
+    }
+
+    public function getAllProducts()
+    {
+        $status = 0;
+        $sql = "SELECT * FROM products WHERE status=? ORDER BY date DESC";
+        $statement = $this->db->prepare($sql);
+        $statement->bindParam(1, $status, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result ?: [];
+    }
+
 }

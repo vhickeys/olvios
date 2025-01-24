@@ -271,10 +271,27 @@ function textToSlug($text)
     return $text;
 }
 
-function setActivePage($currentPage, $linkPage)
+// function setActivePage($currentPage, $linkPage)
+// {
+//     if ($currentPage === $linkPage) {
+//         return 'active';
+//     } else {
+//         return '';
+//     }
+// }
+
+function setActivePage1($currentPage, $linkPage)
 {
     if ($currentPage === $linkPage) {
-        return 'active';
+        return 'bg1-color';
+    } else {
+        return '';
+    }
+}
+function setActivePage2($currentPage, $linkPage)
+{
+    if ($currentPage === $linkPage) {
+        return 'n11-color';
     } else {
         return '';
     }

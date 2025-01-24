@@ -217,4 +217,51 @@ class Blog
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         return $result ?: [];
     }
+
+    public function getBlogPosts($limit)
+    {
+        $status = 0;
+        $sql = "SELECT * FROM posts WHERE status=? ORDER BY date DESC LIMIT $limit";
+        $statement = $this->db->prepare($sql);
+        $statement->bindParam(1, $status, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result ?: [];
+    }
+
+    public function getPostBySlugStatus($slug)
+    {
+        $status = 0;
+        $sql = "SELECT * FROM posts WHERE slug=? AND status=?";
+        $statement = $this->db->prepare($sql);
+        $statement->bindParam(1, $slug, PDO::PARAM_STR);
+        $statement->bindParam(2, $status, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result ?: [];
+    }
+
+    public function getPreviousPost($curent_id)
+    {
+        $status = 0;
+        $sql = "SELECT * FROM posts WHERE id<? AND status=? ORDER BY id DESC LIMIT 1";
+        $statement = $this->db->prepare($sql);
+        $statement->bindParam(1, $curent_id, PDO::PARAM_STR);
+        $statement->bindParam(2, $status, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result ?: [];
+    }
+
+    public function getNextPost($curent_id)
+    {
+        $status = 0;
+        $sql = "SELECT * FROM posts WHERE id>? AND status=? ORDER BY id DESC LIMIT 1";
+        $statement = $this->db->prepare($sql);
+        $statement->bindParam(1, $curent_id, PDO::PARAM_STR);
+        $statement->bindParam(2, $status, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result ?: [];
+    }
 }

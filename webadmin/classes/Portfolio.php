@@ -220,6 +220,75 @@ class Portfolio
         $statement->bindParam(1, $id, PDO::PARAM_INT);
         $statement->execute();
         $result = $statement->fetch(PDO::FETCH_ASSOC);
-        return $result ?: null;
+        return $result ?: [];
+    }
+
+    public function getPortfolioByIdStatus($id)
+    {
+        $status = 0;
+        $sql = "SELECT * FROM portfolios WHERE id=? AND status=?";
+        $statement = $this->db->prepare($sql);
+        $statement->bindParam(1, $id, PDO::PARAM_INT);
+        $statement->bindParam(2, $status, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result ?: [];
+    }
+
+    public function getPortfolioBySlugStatus($slug)
+    {
+        $status = 0;
+        $sql = "SELECT * FROM portfolios WHERE slug=? AND status=?";
+        $statement = $this->db->prepare($sql);
+        $statement->bindParam(1, $slug, PDO::PARAM_STR);
+        $statement->bindParam(2, $status, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result ?: [];
+    }
+
+    public function getPortfolioByCatId($id)
+    {
+        $status = 0;
+        $sql = "SELECT * FROM portfolios WHERE category_id=? AND status=? ORDER BY date DESC";
+        $statement = $this->db->prepare($sql);
+        $statement->bindParam(1, $id, PDO::PARAM_INT);
+        $statement->bindParam(2, $status, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result ?: [];
+    }
+
+    public function getPortfolioLimit($limit)
+    {
+        $status = 0;
+        $sql = "SELECT * FROM portfolios WHERE status=? ORDER BY date DESC LIMIT $limit";
+        $statement = $this->db->prepare($sql);
+        $statement->bindParam(1, $status, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result ?: [];
+    }
+
+    public function getAllPortfolios()
+    {
+        $status = 0;
+        $sql = "SELECT * FROM portfolios WHERE status=? ORDER BY date DESC";
+        $statement = $this->db->prepare($sql);
+        $statement->bindParam(1, $status, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result ?: [];
+    }
+
+    public function portfolioStatusCount()
+    {
+        $status = 0;
+        $sql = "SELECT * FROM portfolios WHERE status=?";
+        $statement = $this->db->prepare($sql);
+        $statement->bindParam(1, $status, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->rowCount();
+        return $result ?: [];
     }
 }

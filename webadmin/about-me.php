@@ -10,7 +10,7 @@ include_once('components/nav-header.php');
 include_once('components/header.php');
 include_once('components/sidebar.php');
 
-$about_me = $aboutMe->getproductById("1");
+$about_me = $aboutMe->getAboutMeDetails();
 
 ?>
 

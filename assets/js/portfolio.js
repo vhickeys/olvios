@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
         // Show/Hide tab content based on the selected tab
         tabContents.forEach((content) => {
-          if (target === "#all" || `#${content.id}` === target) {
+          if (`#${content.id}` === target) {
             content.classList.add("active"); // Show matching content
             content.style.display = "block"; // Ensure visibility
           } else {
