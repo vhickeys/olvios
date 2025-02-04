@@ -155,6 +155,18 @@ class Testimonial
 
         return $result ?: [];
     }
+
+    public function getTestimonialByStatus($limit)
+    {
+        $status = 0;
+        $sql = "SELECT * FROM testimonials WHERE status=? ORDER BY date DESC LIMIT $limit";
+        $statement = $this->db->prepare($sql);
+        $statement->bindParam(1, $status, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result ?: [];
+    }
     public function deleteTestimonial($testimonial_id)
     {
 

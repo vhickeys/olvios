@@ -5,3 +5,9 @@ description
 image
 rating
 status
+
+resume
+about, education, hobbies
+contact
+comments on post
+email

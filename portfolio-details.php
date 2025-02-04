@@ -26,7 +26,7 @@ include_once 'components/color-switcher.php';
             </p>
             <a href="contact.php"
                 class="w-max primary-btn fw-medium n11-color px-3 px-md-6 py-2 py-md-4 rounded-pill d-flex align-items-center gap-2 mx-auto">
-                <i class="ph ph-paper-plane-tilt"></i>Hire Me
+                <i class="ph ph-paper-plane-tilt"></i>Start Building With Me
             </a>
         </div>
     </div>

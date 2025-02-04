@@ -22,11 +22,11 @@
               </a>
             </li>
             <li>
-              <a href="price.php" class="d-flex align-items-center gap-2 n5-color fs-eight p-2">
+              <a href="services.php" class="d-flex align-items-center gap-2 n5-color fs-eight p-2">
                 <span class="fs-five d-flex align-items-center justify-content-center">
                   <i class="ph-fill ph-briefcase"></i>
                 </span>
-                <span class="d-none d-md-block">Pricing</span>
+                <span class="d-none d-md-block">Services</span>
               </a>
             </li>
             <li>

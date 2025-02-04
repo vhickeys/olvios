@@ -5,6 +5,7 @@ $categories = $category->getCategoriesByStatus("categories", "0");
 $allPortfolios = $portfolio->getAllPortfolios();
 $allProducts = $product->getAllProducts();
 $featuredProjects = $portfolio->getPortfolioLimit("6");
+$testimonials = $testimonial->getTestimonialByStatus("6");
 $blogPosts = $blog->getBlogPosts("3");
 
 $portfolio_details = $portfolio->getPortfolioBySlugStatus($_GET['portId'] ?? '');

@@ -37,14 +37,14 @@
                   </defs>
                 </svg>
               </a>
-              <a href="checkout.php" class="position-relative">
+              <!-- <a href="checkout.php" class="position-relative">
                 <div class="side-icon bg1-color">
                   <i class="ph ph-shopping-cart n11-color"></i>
                 </div>
                 <div class="cart-counter">
                   <span class="n1-color">02</span>
                 </div>
-              </a>
+              </a> -->
               <div class="d-flex flex-column align-items-center gap-1">
                 <span class="toggle_name fs-eleven n5-color">DarkMode</span>
                 <button class="side-icon bg1-color mood_toggle">
@@ -102,10 +102,9 @@
                       <span class="n5-color bg2-color fs-ten px-1 pt-1 rounded-2 me-3"><?= $portfolio->portfolioStatusCount() ?></span>
                     </a>
                   </li>
-                  <li class="rounded-3">
-                    <a href="price.php" class="d-flex align-items-center gap-2 n5-color fs-eight px-3 py-2"><i
-                        class="ph ph-briefcase fs-six"></i>Services &
-                      Pricing</a>
+                  <li class="rounded-3 <?= setActivePage1($currentPage, 'services') ?>">
+                    <a href="services.php" class="d-flex align-items-center gap-2 <?= setActivePage2($currentPage, 'services') ?> fs-eight px-3 py-2"><i
+                        class="ph ph-briefcase fs-six"></i>Services</a>
                   </li>
                   <li class="rounded-3">
                     <a href="resume.php" class="d-flex align-items-center gap-2 n5-color fs-eight px-3 py-2"><i

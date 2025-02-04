@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2025 at 03:54 PM
+-- Generation Time: Feb 04, 2025 at 04:44 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -48,7 +48,7 @@ CREATE TABLE `about_me` (
 --
 
 INSERT INTO `about_me` (`id`, `name`, `role`, `intro_title`, `intro_text`, `years_of_experience`, `projects_completed`, `clients_worldwide`, `what_i_do`, `image`, `resume`, `status`, `date`) VALUES
-(1, 'Victor Osaronwafor', 'Software Developer', 'HI, I\'M A FREELANCER', 'I\'m a software engineer specializing in scalable web apps.', 5, 50, 30, 'I have more than 10 years\' experience building software for clients all over the world. Below is a quick overview of my main technical skill sets and technologies I use.', '677cd6c16e2a0.jpg', '677741d361096.pdf', 0, '2025-01-03 01:48:48');
+(1, 'Victor Osaronwafor', 'Software Developer', 'HI, I\'M A FREELANCER', 'I\'m a software engineer specializing in scalable web apps.', 5, 50, 30, 'I design and develop high-performance websites, mobile apps, and enterprise software tailored to business needs. My expertise spans full-stack web development, UI/UX design, e-commerce solutions, legacy system modernization, and high-tech software development. From custom portals to AI-powered applications, I build robust and scalable digital solutions that drive growth and efficiency.', '677cd6c16e2a0.jpg', '677741d361096.pdf', 0, '2025-01-03 01:48:48');
 
 -- --------------------------------------------------------
 
@@ -243,6 +243,32 @@ INSERT INTO `settings` (`id`, `wallet_address`, `about`, `phone`, `email`, `offi
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `testimonials`
+--
+
+CREATE TABLE `testimonials` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `country` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `rating` int(1) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `testimonials`
+--
+
+INSERT INTO `testimonials` (`id`, `name`, `country`, `description`, `image`, `rating`, `status`, `date`) VALUES
+(2, 'Victor John UPDATE', 'Algeria UPDATE', 'Algeria UPDATE', '67a1f8c4dc1f6.jpg', 507, 1, '2025-02-04 11:45:25'),
+(3, 'Victory Ehikioya ', 'Abuja ', 'I love him  ', '67a1f8df64acb.jpg', 2, 0, '2025-02-04 11:48:05'),
+(4, 'Victory Eseohe', 'Abuja', 'I love his work', '67a1f8f06f700.jpg', 3, 0, '2025-02-04 12:00:18');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -275,6 +301,32 @@ CREATE TABLE `visitors` (
   `page_url` varchar(255) NOT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `work_experiences`
+--
+
+CREATE TABLE `work_experiences` (
+  `id` int(11) NOT NULL,
+  `job_title` varchar(255) NOT NULL,
+  `description` longtext NOT NULL,
+  `company` varchar(255) NOT NULL,
+  `duration` varchar(255) NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `work_experiences`
+--
+
+INSERT INTO `work_experiences` (`id`, `job_title`, `description`, `company`, `duration`, `location`, `status`, `date`) VALUES
+(2, 'Web Manager', 'Graphics Designer', 'Golden City', 'March 2021 - March 2022', 'Abuja', 0, '2025-02-04 09:36:12'),
+(3, 'Software Developer', 'Software Developer', 'Africa Economic Forum', 'March 2024 - March 2028', 'Kigali', 0, '2025-02-04 09:37:03'),
+(4, 'Graphics Designer', 'Graphics Designer', 'Tech Nader', 'March 2020 - March 2022', 'F.C.T Abuja', 1, '2025-02-04 10:12:59');
 
 --
 -- Indexes for dumped tables
@@ -329,6 +381,12 @@ ALTER TABLE `settings`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `testimonials`
+--
+ALTER TABLE `testimonials`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -338,6 +396,12 @@ ALTER TABLE `users`
 -- Indexes for table `visitors`
 --
 ALTER TABLE `visitors`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `work_experiences`
+--
+ALTER TABLE `work_experiences`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -393,6 +457,12 @@ ALTER TABLE `settings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `testimonials`
+--
+ALTER TABLE `testimonials`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -403,6 +473,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `visitors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `work_experiences`
+--
+ALTER TABLE `work_experiences`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
