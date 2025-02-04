@@ -1,6 +1,7 @@
 id
-job_title
+name
+country
 description
-company
-duration
-location
+image
+rating
+status

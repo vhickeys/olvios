@@ -9,6 +9,7 @@ require 'Blog.php';
 require 'Category.php';
 require 'Portfolio.php';
 require 'Product.php';
+require 'Testimonial.php';
 require 'Record.php';
 require 'Settings.php';
 require 'Contact.php';
@@ -27,6 +28,8 @@ $category = new Category($database);
 $portfolio = new Portfolio($database);
 
 $product = new Product($database);
+
+$testimonial = new Testimonial($database);
 
 $record = new Record($database);
 

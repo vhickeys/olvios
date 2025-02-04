@@ -80,6 +80,8 @@ if (isset($_GET['action'])) {
             }
             break;
 
+        // Work Experience CRUD
+
         case 'submit-work-exp':
             if (isset($_POST['add-work-exp'])) {
                 $job_title = $_POST['job_title'];
@@ -113,6 +115,8 @@ if (isset($_GET['action'])) {
                 $aboutMe->deleteWorkExp($workExpId);
             }
             break;
+
+        // Blog Post CRUD
 
         case 'create-post':
             if (isset($_POST['submit-post'])) {
@@ -165,6 +169,8 @@ if (isset($_GET['action'])) {
             }
             break;
 
+        // Category CRUD
+
         case 'create-category':
             if (isset($_POST['submit-category'])) {
 
@@ -189,6 +195,8 @@ if (isset($_GET['action'])) {
                 $category->editCategory($pCatId, $name, $slug, $description, $status);
             }
             break;
+
+        // Portfolio CRUD
 
         case 'create-portfolio':
             if (isset($_POST['submit-portfolio'])) {
@@ -250,6 +258,8 @@ if (isset($_GET['action'])) {
             }
             break;
 
+        // Product CRUD
+
         case 'create-product':
             if (isset($_POST['submit-product'])) {
 
@@ -298,6 +308,43 @@ if (isset($_GET['action'])) {
             if (isset($_POST['delete-product'])) {
                 $product_id = $_POST['productModalId'];
                 $product->deleteProduct($product_id);
+            }
+            break;
+
+        // Testimonial CRUD
+
+        case 'create-testimonial':
+            if (isset($_POST['submit-testimonial'])) {
+                $name = $_POST['name'];
+                $country = $_POST['country'];
+                $description = $_POST['description'];
+                $image = $_FILES['image'];
+                $rating = $_POST['rating'];
+                $status = $_POST['status'] == true ? '1' : '0';
+
+                $testimonial->createTestimonial($name, $country, $description, $image, $rating, $status);
+            }
+            break;
+
+        case 'edit-testimonial':
+            if (isset($_POST['update-testimonial'])) {
+                $testimonial_id = $_POST['testimonial_id'];
+                $name = $_POST['name'];
+                $country = $_POST['country'];
+                $description = $_POST['description'];
+                $image = $_FILES['image'];
+                $old_image = $_POST['old_image'];
+                $rating = $_POST['rating'];
+                $status = $_POST['status'] == true ? '1' : '0';
+
+                $testimonial->updateTestimonial($testimonial_id, $name, $country, $description, $image, $old_image, $rating, $status);
+            }
+            break;
+
+        case 'delete-testimonial':
+            if (isset($_POST['delete-testimonial'])) {
+                $testimonial_id = $_POST['testimonialModalId'];
+                $testimonial->deleteTestimonial($testimonial_id);
             }
             break;
 

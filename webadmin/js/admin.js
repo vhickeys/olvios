@@ -256,8 +256,11 @@ $(document).ready(function () {
   // Delete Post
   confirmDelete("delete-post", "deletePostModal", "postModalId");
 
-  // Delete Post
+  // Delete Work Experience
   confirmDelete("delete-work-exp", "deleteWorkExpModal", "workExpModalId");
+
+  // Delete Testimonial
+  confirmDelete("delete-testimonial", "deleteTestimonialModal", "testimonialModalId");
 
   // Change User Role
   confirmDelete("change-role", "changeUserRoleModal", "userId");
