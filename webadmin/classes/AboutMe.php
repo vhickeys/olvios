@@ -146,7 +146,51 @@ class AboutMe
         }
     }
 
+    public function addWorkExp($job_title, $description, $company, $duration, $location, $status)
+    {
+        if (empty($job_title)) {
+            $_SESSION['errorMessage'] = "Job Title is required!";
+            header("location: ../add-work-exp.php");
+            exit(0);
+        } else {
+            $sql = "INSERT INTO work_experiences (job_title, description, company, duration, location, status) VALUES(?,?,?,?,?,?)";
+            $statement = $this->db->prepare($sql);
+            $statement->execute([$job_title, $description, $company, $duration, $location, $status]);
 
+            if ($statement) {
+                $_SESSION['successMessage'] = "Work Experience Added Successfully!";
+                header("location: ../view-work-exp.php");
+                exit(0);
+            } else {
+                $_SESSION['errorMessage'] = "Something Went Wrong!";
+                header("location: ../add-work-exp.php");
+                exit(0);
+            }
+        }
+    }
+
+    public function updateWorkExp($workExpId, $job_title, $description, $company, $duration, $location, $status)
+    {
+        if (empty($job_title)) {
+            $_SESSION['errorMessage'] = "Job Title is required!";
+            header("location: ../edit-work-exp.php?workExpId=$workExpId");
+            exit(0);
+        } else {
+            $sql = "UPDATE work_experiences SET job_title=?, description=?, company=?, duration=?, location=?, status=? WHERE id=?";
+            $statement = $this->db->prepare($sql);
+            $statement->execute([$job_title, $description, $company, $duration, $location, $status, $workExpId]);
+
+            if ($statement) {
+                $_SESSION['successMessage'] = "Work Experience Updated Successfully!";
+                header("location: ../view-work-exp.php");
+                exit(0);
+            } else {
+                $_SESSION['errorMessage'] = "Something Went Wrong!";
+                header("location: ../edit-work-exp.php?workExpId=$workExpId");
+                exit(0);
+            }
+        }
+    }
     public function getAboutMe()
     {
         $id = '1';
@@ -167,5 +211,42 @@ class AboutMe
         $statement->execute();
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         return $result ?: [];
+    }
+
+    public function getWorkExp()
+    {
+        $sql = "SELECT * FROM work_experiences ORDER BY date DESC";
+        $statement = $this->db->prepare($sql);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result ?: [];
+    }
+
+    public function getWorkExpById($id)
+    {
+        $sql = "SELECT * FROM work_experiences WHERE id=? LIMIT 1";
+        $statement = $this->db->prepare($sql);
+        $statement->bindParam(1, $id, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result ?: [];
+    }
+
+    public function deleteWorkExp($workExpId)
+    {
+        $sql = "DELETE FROM work_experiences WHERE id=?";
+        $statement = $this->db->prepare($sql);
+        $statement->execute([$workExpId]);
+
+        if ($statement) {
+            $_SESSION['successMessage'] = "Work Experience Deleted Successfully!";
+            header("location: ../view-work-exp.php");
+            exit(0);
+        } else {
+            $_SESSION['errorMessage'] = "Something Went Wrong!";
+            header("location: ../view-work-exp.php");
+            exit(0);
+        }
     }
 }

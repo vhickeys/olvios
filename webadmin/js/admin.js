@@ -256,6 +256,9 @@ $(document).ready(function () {
   // Delete Post
   confirmDelete("delete-post", "deletePostModal", "postModalId");
 
+  // Delete Post
+  confirmDelete("delete-work-exp", "deleteWorkExpModal", "workExpModalId");
+
   // Change User Role
   confirmDelete("change-role", "changeUserRoleModal", "userId");
 

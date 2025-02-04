@@ -1,5 +1,6 @@
-quoted_by
-youtube_url
-conclusion
-
-javascript:void(0)
+id
+job_title
+description
+company
+duration
+location

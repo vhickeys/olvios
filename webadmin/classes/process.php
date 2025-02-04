@@ -80,6 +80,40 @@ if (isset($_GET['action'])) {
             }
             break;
 
+        case 'submit-work-exp':
+            if (isset($_POST['add-work-exp'])) {
+                $job_title = $_POST['job_title'];
+                $description = $_POST['description'];
+                $company = $_POST['company'];
+                $duration = $_POST['duration'];
+                $location = $_POST['location'];
+                $status = $_POST['status'] == true ? '1' : '0';
+
+                $aboutMe->addWorkExp($job_title, $description, $company, $duration, $location, $status);
+            }
+            break;
+
+        case 'edit-work-exp':
+            if (isset($_POST['update-work-exp'])) {
+                $workExpId = $_POST['workExpId'];
+                $job_title = $_POST['job_title'];
+                $description = $_POST['description'];
+                $company = $_POST['company'];
+                $duration = $_POST['duration'];
+                $location = $_POST['location'];
+                $status = $_POST['status'] == true ? '1' : '0';
+
+                $aboutMe->updateWorkExp($workExpId, $job_title, $description, $company, $duration, $location, $status);
+            }
+            break;
+
+        case 'delete-work-exp':
+            if (isset($_POST['delete-work-exp'])) {
+                $workExpId = $_POST['workExpModalId'];
+                $aboutMe->deleteWorkExp($workExpId);
+            }
+            break;
+
         case 'create-post':
             if (isset($_POST['submit-post'])) {
                 $title = $_POST['title'];
@@ -350,4 +384,6 @@ if (isset($_GET['action'])) {
             # code...
             break;
     }
+} else {
+    echo "<script>window.history.back()</script>";
 }
