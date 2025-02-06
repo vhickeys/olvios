@@ -70,13 +70,21 @@ if (isset($_GET['action'])) {
                 $projects_completed = $_POST['projects_completed'];
                 $clients_worldwide = $_POST['clients_worldwide'];
                 $what_i_do = $_POST['what_i_do'];
+                $pro_summary = $_POST['pro_summary'];
+                $skills = $_POST['skills'];
+                $education = $_POST['education'];
+                $awards = $_POST['awards'];
+                $certifications = $_POST['certifications'];
+                $languages = $_POST['languages'];
+                $interest = $_POST['interest'];
+                $github_link = $_POST['github_link'];
                 $image = $_FILES['image'];
                 $old_image = $_POST['old_image'];
                 $resume = $_FILES['resume'];
                 $old_resume = $_POST['old_resume'];
                 $status = $_POST['status'] == true ? '1' : '0';
 
-                $aboutMe->aboutMe($name, $role, $intro_title, $intro_text, $years_of_experience, $projects_completed, $clients_worldwide, $what_i_do, $image, $old_image, $resume, $old_resume, $status);
+                $aboutMe->aboutMe($name, $role, $intro_title, $intro_text, $years_of_experience, $projects_completed, $clients_worldwide, $what_i_do, $pro_summary, $skills, $education, $awards, $certifications, $languages, $interest, $github_link, $image, $old_image, $resume, $old_resume, $status);
             }
             break;
 

@@ -28,6 +28,7 @@
     <link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="vendor/swiper/css/swiper-bundle.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.4/nouislider.min.css">
     <link href="vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="vendor/jvmap/jquery-jvectormap.css" rel="stylesheet">

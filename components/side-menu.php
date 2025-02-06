@@ -106,8 +106,8 @@
                     <a href="services.php" class="d-flex align-items-center gap-2 <?= setActivePage2($currentPage, 'services') ?> fs-eight px-3 py-2"><i
                         class="ph ph-briefcase fs-six"></i>Services</a>
                   </li>
-                  <li class="rounded-3">
-                    <a href="resume.php" class="d-flex align-items-center gap-2 n5-color fs-eight px-3 py-2"><i
+                  <li class="rounded-3 <?= setActivePage1($currentPage, 'resume') ?>">
+                    <a href="resume.php" class="d-flex align-items-center gap-2 <?= setActivePage2($currentPage, 'resume') ?>  fs-eight px-3 py-2" ><i
                         class="ph ph-notebook fs-six"></i> Resume</a>
                   </li>
                   <li class="rounded-3 <?= setActivePage1($currentPage, 'products') ?>">
@@ -118,8 +118,8 @@
                     <a href="blog.php" class="d-flex align-items-center gap-2 <?= setActivePage2($currentPage, 'blog') ?> fs-eight px-3 py-2"><i
                         class="ph ph-newspaper-clipping fs-six"></i>Blog</a>
                   </li>
-                  <li class="rounded-3">
-                    <a href="contact.php" class="d-flex align-items-center gap-2 n5-color fs-eight px-3 py-2"><i
+                  <li class="rounded-3 <?= setActivePage1($currentPage, 'contact') ?>">
+                    <a href="contact.php" class="d-flex align-items-center gap-2 <?= setActivePage2($currentPage, 'contact') ?> fs-eight px-3 py-2"><i
                         class="ph ph-envelope fs-six"></i>Contact</a>
                   </li>
                 </ul>

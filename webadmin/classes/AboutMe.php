@@ -8,7 +8,7 @@ class AboutMe
         $this->db = $database->getConnection();
     }
 
-    public function aboutMe($name, $role, $intro_title, $intro_text, $years_of_experience, $projects_completed, $clients_worldwide, $what_i_do, $image, $old_image, $resume, $old_resume, $status)
+    public function aboutMe($name, $role, $intro_title, $intro_text, $years_of_experience, $projects_completed, $clients_worldwide, $what_i_do, $pro_summary, $skills, $education, $awards, $certifications, $languages, $interest, $github_link, $image, $old_image, $resume, $old_resume, $status)
     {
 
         $abtId = "1";
@@ -39,9 +39,9 @@ class AboutMe
 
                 unlink_and_move("../../assets/images/aboutMe/$old_resume", "../../assets/images/aboutMe/$resume_new_name", $resume_tmp_name);
 
-                $sql = "UPDATE about_me SET name=?, role=?, intro_title=?, intro_text=?, years_of_experience=?, projects_completed=?, clients_worldwide=?, what_i_do=?, image=?, resume=?, status=? WHERE id=?";
+                $sql = "UPDATE about_me SET name=?, role=?, intro_title=?, intro_text=?, years_of_experience=?, projects_completed=?, clients_worldwide=?, what_i_do=?,  pro_summary=?, skills=?, education=?, awards=?, certifications=?, languages=?, interest=?, github_link=?, image=?, resume=?, status=? WHERE id=?";
                 $statement = $this->db->prepare($sql);
-                $statement->execute([$name, $role, $intro_title, $intro_text, $years_of_experience, $projects_completed, $clients_worldwide, $what_i_do, $image_new_name, $resume_new_name, $status, $abtId]);
+                $statement->execute([$name, $role, $intro_title, $intro_text, $years_of_experience, $projects_completed, $clients_worldwide, $what_i_do, $pro_summary, $skills, $education, $awards, $certifications, $languages, $interest, $github_link, $image_new_name, $resume_new_name, $status, $abtId]);
 
                 if ($statement) {
                     $_SESSION['successMessage'] = "About Me Updated Successfully!";
@@ -74,9 +74,9 @@ class AboutMe
 
                 unlink_and_move("../../assets/images/aboutMe/$old_image", "../../assets/images/aboutMe/$image_new_name", $image_tmp_name);
 
-                $sql = "UPDATE about_me SET name=?, role=?, intro_title=?, intro_text=?, years_of_experience=?, projects_completed=?, clients_worldwide=?, what_i_do=?, image=?, status=? WHERE id=?";
+                $sql = "UPDATE about_me SET name=?, role=?, intro_title=?, intro_text=?, years_of_experience=?, projects_completed=?, clients_worldwide=?, what_i_do=?, pro_summary=?, skills=?, education=?, awards=?, certifications=?, languages=?, interest=?, github_link=?, image=?, status=? WHERE id=?";
                 $statement = $this->db->prepare($sql);
-                $statement->execute([$name, $role, $intro_title, $intro_text, $years_of_experience, $projects_completed, $clients_worldwide, $what_i_do, $image_new_name, $status, $abtId]);
+                $statement->execute([$name, $role, $intro_title, $intro_text, $years_of_experience, $projects_completed, $clients_worldwide, $what_i_do, $pro_summary, $skills, $education, $awards, $certifications, $languages, $interest, $github_link, $image_new_name, $status, $abtId]);
 
                 if ($statement) {
                     $_SESSION['successMessage'] = "About Me Updated Successfully!";
@@ -108,9 +108,9 @@ class AboutMe
 
                 unlink_and_move("../../assets/images/aboutMe/$old_resume", "../../assets/images/aboutMe/$resume_new_name", $resume_tmp_name);
 
-                $sql = "UPDATE about_me SET name=?, role=?, intro_title=?, intro_text=?, years_of_experience=?, projects_completed=?, clients_worldwide=?, what_i_do=?, resume=?, status=? WHERE id=?";
+                $sql = "UPDATE about_me SET name=?, role=?, intro_title=?, intro_text=?, years_of_experience=?, projects_completed=?, clients_worldwide=?, what_i_do=?, pro_summary=?, skills=?, education=?, awards=?, certifications=?, languages=?, interest=?, github_link=?, resume=?, status=? WHERE id=?";
                 $statement = $this->db->prepare($sql);
-                $statement->execute([$name, $role, $intro_title, $intro_text, $years_of_experience, $projects_completed, $clients_worldwide, $what_i_do, $resume_new_name, $status, $abtId]);
+                $statement->execute([$name, $role, $intro_title, $intro_text, $years_of_experience, $projects_completed, $clients_worldwide, $what_i_do, $pro_summary, $skills, $education, $awards, $certifications, $languages, $interest, $github_link, $resume_new_name, $status, $abtId]);
 
                 if ($statement) {
                     $_SESSION['successMessage'] = "About Me Updated Successfully!";
@@ -129,9 +129,9 @@ class AboutMe
                 exit(0);
             } else {
 
-                $sql = "UPDATE about_me SET name=?, role=?, intro_title=?, intro_text=?, years_of_experience=?, projects_completed=?, clients_worldwide=?, what_i_do=?, status=? WHERE id=?";
+                $sql = "UPDATE about_me SET name=?, role=?, intro_title=?, intro_text=?, years_of_experience=?, projects_completed=?, clients_worldwide=?, what_i_do=?, pro_summary=?, skills=?, education=?, awards=?, certifications=?, languages=?, interest=?, github_link=?, status=? WHERE id=?";
                 $statement = $this->db->prepare($sql);
-                $statement->execute([$name, $role, $intro_title, $intro_text, $years_of_experience, $projects_completed, $clients_worldwide, $what_i_do, $status, $abtId]);
+                $statement->execute([$name, $role, $intro_title, $intro_text, $years_of_experience, $projects_completed, $clients_worldwide, $what_i_do, $pro_summary, $skills, $education, $awards, $certifications, $languages, $interest, $github_link, $status, $abtId]);
 
                 if ($statement) {
                     $_SESSION['successMessage'] = "About Me Updated Successfully!";

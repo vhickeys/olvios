@@ -1,10 +1,12 @@
-id
-name
-country
-description
-image
-rating
-status
+pro_summary
+skills
+education
+awards
+certifications
+languages
+interest
+github_link
+
 
 resume
 about, education, hobbies

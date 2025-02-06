@@ -1,5 +1,6 @@
 <?php
   $title = "Contact Me";
+  $currentPage = "contact";
   include_once 'components/head.php';
   include_once 'components/side-menu.php';
   include_once 'components/top-header.php';
