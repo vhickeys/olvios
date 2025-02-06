@@ -142,14 +142,16 @@ include_once 'components/color-switcher.php';
                     <a href="blog-details.php?read=<?= $previousPost['slug'] ?>"
                         class="prev-card d-flex gap-3 gap-md-6 align-items-center p-3 brn4 rounded-3">
                         <div class="overflow-hidden">
-                            <img src="assets/images/posts/<?= $previousPost['image'] ?>" alt="<?= $previousPost['title'] ?? '' ?> | Victor Osaronwafor" class="prev-img" />
+                            <img src="assets/images/posts/<?= $previousPost['image'] ?>"
+                                alt="<?= $previousPost['title'] ?? '' ?> | Victor Osaronwafor" class="prev-img" />
                         </div>
                         <div>
                             <span class="d-flex gap-1 align-items-center p1-color">
                                 <i class="ph ph-caret-double-left"></i>
                                 Previous
                             </span>
-                            <span class="n5-color fw-semibold fs-eight mt-2 d-block"><?= $previousPost['title'] ?? '' ?></span>
+                            <span
+                                class="n5-color fw-semibold fs-eight mt-2 d-block"><?= $previousPost['title'] ?? '' ?></span>
                         </div>
                     </a>
                 <?php endif; ?>
@@ -159,7 +161,8 @@ include_once 'components/color-switcher.php';
                     <a href="blog-details.php?read=<?= $nextPost['slug'] ?>"
                         class="next-card d-flex gap-3 gap-md-6 align-items-center p-3 brn4 rounded-3">
                         <div class="overflow-hidden">
-                            <img src="assets/images/posts/<?= $nextPost['image'] ?>" alt="<?= $nextPost['title'] ?? '' ?> | Victor Osaronwafor" class="prev-img" />
+                            <img src="assets/images/posts/<?= $nextPost['image'] ?>"
+                                alt="<?= $nextPost['title'] ?? '' ?> | Victor Osaronwafor" class="prev-img" />
                         </div>
                         <div>
                             <span class="d-flex gap-1 align-items-center p1-color">
@@ -268,29 +271,31 @@ include_once 'components/color-switcher.php';
                 Your email address will not be published. Required fields are
                 marked *
             </p>
-            <form class="mt-5 mt-md-10">
+
+            <form class="mt-5 mt-md-10" id="submitComment">
+
+                <div id="alert">alert</div>
+
+                <input type="hidden" id="post_id" value="<?= $blog_post_details['id'] ?>">
+
                 <div class="d-flex flex-wrap flex-md-nowrap align-items-center gap-3 gap-md-6">
-                    <input type="text" placeholder="First Name"
+                    <input type="text" id="first_name" placeholder="First Name"
                         class="px-4 px-md-8 py-2 py-md-4 w-100 brn4 rounded-3 n5-color" />
-                    <input type="text" placeholder="Last Name"
+                    <input type="text" id="last_name" placeholder="Last Name"
                         class="px-4 px-md-8 py-2 py-md-4 w-100 brn4 rounded-3 n5-color" />
                 </div>
-                <input type="email" placeholder="Enter Email"
+
+                <input type="email" id="email" placeholder="Enter Email"
                     class="px-4 px-md-8 py-2 py-md-4 w-100 brn4 rounded-3 n5-color my-3 my-md-6" />
-                <textarea class="n5-color px-3 px-md-5 py-2 py-md-4 rounded-2 brn4 w-100 h-120"
+                <textarea class="n5-color px-3 px-md-5 py-2 py-md-4 rounded-2 brn4 w-100 h-120" id="message"
                     placeholder="Your Message:"></textarea>
 
-                <div class="d-flex gap-2 align-items-center mt-3 mt-md-5">
-                    <input id="check" type="checkbox" class="cursor-pointer" />
-                    <label for="check" class="n4-color fs-nine cursor-pointer">
-                        Save my name, email, and website in this browser for the
-                        next time.
-                    </label>
-                </div>
-                <button class="primary-btn fw-medium px-3 px-md-6 py-2 py-md-4 rounded-pill mt-5 mt-md-10">
-                    Post Comment
+                <button type="submit" id="submit_post_btn"
+                    class="primary-btn fw-medium px-3 px-md-6 py-2 py-md-4 rounded-pill mt-5 mt-md-10">
+                    <span class="spinner-border spinner-border-sm text-light post_spinner me-2" role="status"></span> Post Comment
                 </button>
             </form>
+
         </section>
     </div>
 </section>

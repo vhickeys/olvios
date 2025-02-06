@@ -73,7 +73,6 @@
 <script>
     tinymce.init({
         selector: 'textarea.tiny',
-        content_style: "body { font-family: 'Jost', sans-serif; }",
     });
 </script>
 <!-- <script src="js/styleSwitcher.js"></script> -->

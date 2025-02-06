@@ -177,6 +177,21 @@ if (isset($_GET['action'])) {
             }
             break;
 
+
+        // Blog Post CRUD
+
+        case 'create-comment':
+            if (isset($_POST['post_id']) && isset($_POST['first_name']) && isset($_POST['last_name'])) {
+                $post_id = $_POST['post_id'];
+                $first_name = $_POST['first_name'];
+                $last_name = $_POST['last_name'];
+                $email = $_POST['email'];
+                $message = $_POST['message'];
+
+                $blog->createComment($post_id, $first_name, $last_name, $email, $message);
+            }
+            break;
+
         // Category CRUD
 
         case 'create-category':

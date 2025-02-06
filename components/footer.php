@@ -15,6 +15,7 @@
 <script src="assets/js/main.js"></script>
 <script src="assets/js/portfolio.js"></script>
 <script src="assets/js/type-word.js"></script>
+<script src="assets/js/olvios.js"></script>
 <!-- swiper js  -->
 <script src="../cdn.jsdelivr.net/npm/swiper%4011/swiper-bundle.min.js"></script>
 <!-- email js  -->

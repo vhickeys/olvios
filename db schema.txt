@@ -1,11 +1,9 @@
-pro_summary
-skills
-education
-awards
-certifications
-languages
-interest
-github_link
+id
+post_id
+first_name
+last_name
+email
+message
 
 
 resume

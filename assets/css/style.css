@@ -1,10 +1,9 @@
 /*============================================ 
-# Template Name: Protfolily
 # Version: 1.0
-# Date: 25-10-2023
-# Author: 
+# Date: 5th February 2025
+# Author: Victor Osaronwafor
 # Author URI: 
-# Description: Protfolily -Personal Protfolily HTML Template
+# Description: victor Osaronwafor Personal Portfolio
 ============================================*/
 /*============================================ 
 ======== Table of Css Content =========
@@ -18,7 +17,7 @@
 @import "bootstrap.min.css";
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&amp;display=swap");
 body {
-  font-family: "Jost", sans-serif;
+  font-family: "Jost", sans-serif !important;
   font-optical-sizing: auto;
 }
 

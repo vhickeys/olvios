@@ -264,4 +264,17 @@ class Blog
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         return $result ?: [];
     }
+
+    public function createComment($post_id, $first_name, $last_name, $email, $message) {
+        
+        $sql = "INSERT INTO comments (post_id, first_name, last_name, email, message) VALUES(?,?,?,?,?)";
+        $statement = $this->db->prepare($sql);
+        $statement->execute([$post_id, $first_name, $last_name, $email, $message]);
+
+        if ($statement) {
+            echo "success";
+        } else {
+            echo "failed";
+        }
+    }
 }

@@ -223,6 +223,17 @@ class AboutMe
         return $result ?: [];
     }
 
+    public function getWorkExpByStatus()
+    {
+        $status = '0';
+        $sql = "SELECT * FROM work_experiences WHERE status=? ORDER BY date DESC";
+        $statement = $this->db->prepare($sql);
+        $statement->execute([$status]);
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result ?: [];
+    }
+
     public function getWorkExpById($id)
     {
         $sql = "SELECT * FROM work_experiences WHERE id=? LIMIT 1";
