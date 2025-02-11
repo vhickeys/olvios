@@ -277,4 +277,22 @@ class Blog
             echo "failed";
         }
     }
+
+    public function getPostComments($post_id) {
+        $sql = "SELECT * FROM comments WHERE post_id=? ORDER BY id DESC";
+        $statement = $this->db->prepare($sql);
+        $statement->bindParam(1, $post_id, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result ?: [];
+    }
+
+    public function postCommentsCount($post_id) {
+        $sql = "SELECT * FROM comments WHERE post_id=? ORDER BY id DESC";
+        $statement = $this->db->prepare($sql);
+        $statement->bindParam(1, $post_id, PDO::PARAM_INT);
+        $statement->execute();
+        $result = $statement->rowCount();
+        return $result ?: 0;
+    }
 }

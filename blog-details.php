@@ -11,6 +11,8 @@ if (!isset($_GET['read']) || empty($_GET['read']) || ($blog->getPostBySlugStatus
 $blogPostId = $blog_post_details['id'];
 $previousPost = $blog->getPreviousPost($blogPostId);
 $nextPost = $blog->getNextPost($blogPostId);
+$comments = $blog->getPostComments($blogPostId);
+$commentsCount = $blog->postCommentsCount($blogPostId);
 
 include_once 'components/side-menu.php';
 include_once 'components/top-header.php';
@@ -178,90 +180,43 @@ include_once 'components/color-switcher.php';
         </div>
 
         <!-- comments -->
-        <section data-aos="fade-up" class="mt-8 mt-md-15">
+        <section data-aos="fade-up" class="mt-8 mt-md-15" id="postComments">
             <h3 class="n5-color fs-three fw-semibold mb-4 mb-md-8">
-                2 Comments
+                <?= $commentsCount ?? '0' ?> Comment(s)
             </h3>
-            <div class="reply-container">
-                <div
-                    class="d-flex flex-wrap flex-md-nowrap gap-4 gap-md-8 px-4 px-md-8 py-3 py-md-6 rounded-3 w-100 brn4">
-                    <div class="flex-shrink-0">
-                        <img src="assets/images/buyer1.png" alt="..." class="cmnt-img flex-shrink-0" />
-                    </div>
 
-                    <div class="w-100">
-                        <div class="d-flex gap-3 justify-content-between align-items-center w-100">
-                            <div class="w-100">
-                                <h6 class="n5-color fs-six fw-medium">Eleanor Pena</h6>
-                                <span class="n5-color fs-nine fw-medium">May 9, 2014</span>
+            <?php if ($comments != []): ?>
+                <?php foreach ($comments as $comment): ?>
+
+                    <div class="reply-container mb-5">
+                        <div
+                            class="d-flex flex-wrap flex-md-nowrap gap-4 gap-md-8 px-4 px-md-8 mb-5 py-3 py-md-6 rounded-3 w-100 brn4">
+                            <div class="flex-shrink-0">
+                                <img src="assets/images/comments/placeholder.jpg"
+                                    alt="<?= $comment['first_name'] ?> | Victor Osaronwafor Olvios"
+                                    class="cmnt-img flex-shrink-0" />
                             </div>
-                            <button class="reply-btn px-3 px-md-5 py-2 p1-color br1 rounded-pill">
-                                Reply
-                            </button>
-                        </div>
-                        <p class="n4-color fs-eight mt-2 mt-md-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                            lobortis arcu enim urna adipiscing praesent velit viverra
-                            sit semper lorem eu cursus vel hendrerit elementum morbi
-                            curabitur etiam nibh justo, lorem aliquet donec sed sit mi
-                            dignissim at ante massa mattis.
-                        </p>
-                    </div>
-                </div>
 
-                <div class="reply-answer my-3 my-md-6 ms-5 ms-md-10">
-                    <form>
-                        <div class="d-flex align-items-center gap-3 gap-md-5">
-                            <input type="text" placeholder="Enter Your comments"
-                                class="px-3 px-md-6 py-2 py-md-4 w-100 brn4 rounded-3 n5-color" />
-                            <button class="fs-six n11-color bg1-color px-3 px-md-5 py-2 rounded-pill">
-                                <i class="ph ph-paper-plane-right"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="reply-container">
-                <div
-                    class="d-flex flex-wrap flex-md-nowrap gap-4 gap-md-8 px-4 px-md-8 py-3 py-md-6 rounded-3 w-100 brn4">
-                    <div class="flex-shrink-0">
-                        <img src="assets/images/buyer3.png" alt="..." class="cmnt-img flex-shrink-0" />
-                    </div>
-
-                    <div class="w-100">
-                        <div class="d-flex gap-3 justify-content-between align-items-center w-100">
                             <div class="w-100">
-                                <h6 class="n5-color fs-six fw-medium">
-                                    Ronald Richards
-                                </h6>
-                                <span class="n5-color fs-nine fw-medium">May 9, 2014</span>
+                                <div class="d-flex gap-3 justify-content-between align-items-center w-100">
+                                    <div class="w-100">
+                                        <h6 class="n5-color fs-six fw-medium">
+                                            <?= $comment['first_name'] . ' ' . $comment['last_name'] ?>
+                                        </h6>
+                                        <span
+                                            class="n5-color fs-nine fw-medium"><?= date('d M, Y', strtotime($comment['date'])) ?></span>
+                                    </div>
+                                </div>
+                                <p class="n4-color fs-eight mt-2 mt-md-4">
+                                    <?= $comment['message'] ?>
+                                </p>
                             </div>
-                            <button class="reply-btn px-3 px-md-5 py-2 p1-color br1 rounded-pill">
-                                Reply
-                            </button>
                         </div>
-                        <p class="n4-color fs-eight mt-2 mt-md-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                            lobortis arcu enim urna adipiscing praesent velit viverra
-                            sit semper lorem eu cursus vel hendrerit elementum morbi
-                            curabitur etiam nibh justo, lorem aliquet donec sed sit mi
-                            dignissim at ante massa mattis.
-                        </p>
                     </div>
-                </div>
 
-                <div class="reply-answer mt-3 mt-md-6 ms-5 ms-md-10">
-                    <form>
-                        <div class="d-flex align-items-center gap-3 gap-md-5">
-                            <input type="text" placeholder="Enter Your comments"
-                                class="px-3 px-md-6 py-2 py-md-4 w-100 brn4 rounded-3 n5-color" />
-                            <button class="fs-six n11-color bg1-color px-3 px-md-5 py-2 rounded-pill">
-                                <i class="ph ph-paper-plane-right"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
         </section>
 
         <!-- reply section -->
@@ -292,7 +247,8 @@ include_once 'components/color-switcher.php';
 
                 <button type="submit" id="submit_post_btn"
                     class="primary-btn fw-medium px-3 px-md-6 py-2 py-md-4 rounded-pill mt-5 mt-md-10">
-                    <span class="spinner-border spinner-border-sm text-light post_spinner me-2" role="status"></span> Post Comment
+                    <span class="spinner-border spinner-border-sm text-light post_spinner me-2" role="status"></span>
+                    Post Comment
                 </button>
             </form>
 

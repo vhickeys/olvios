@@ -9,22 +9,22 @@ class Contact
         $this->db = $database->getConnection();
     }
 
-    public function contactSubmit($name, $email, $phone, $subject, $message)
+    public function contactSubmit($name, $email, $phone, $location, $message)
     {
-        $sql = "INSERT into contacts (name, email, phone, subject, message) values(?,?,?,?,?)";
+        $sql = "INSERT into contacts (name, email, phone, location, message) values(?,?,?,?,?)";
         $statement = $this->db->prepare($sql);
         $statement->bindParam(1, $name, PDO::PARAM_STR);
         $statement->bindParam(2, $email, PDO::PARAM_STR);
         $statement->bindParam(3, $phone, PDO::PARAM_STR);
-        $statement->bindParam(4, $subject, PDO::PARAM_STR);
+        $statement->bindParam(4, $location, PDO::PARAM_STR);
         $statement->bindParam(5, $message, PDO::PARAM_STR);
         $statement->execute();
 
         if ($statement) {
-            // welcomeMail("support@coinhabor.com", $email, $fullname);
-            echo "Message sent successfully!";
+            contactNotificationMail("victorosaronwafor@gmail.com", $email, $name, $phone, $location, $message);
+            echo "success";
         } else {
-            echo "something went wrong!";
+            echo "failed";
         }
     }
 }

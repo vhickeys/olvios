@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2025 at 04:44 PM
+-- Generation Time: Feb 07, 2025 at 04:52 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -37,6 +37,14 @@ CREATE TABLE `about_me` (
   `projects_completed` int(11) NOT NULL,
   `clients_worldwide` int(11) NOT NULL,
   `what_i_do` text NOT NULL,
+  `pro_summary` text NOT NULL,
+  `skills` text NOT NULL,
+  `education` text NOT NULL,
+  `awards` text NOT NULL,
+  `certifications` text NOT NULL,
+  `languages` text NOT NULL,
+  `interest` text NOT NULL,
+  `github_link` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `resume` varchar(255) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 0,
@@ -47,8 +55,8 @@ CREATE TABLE `about_me` (
 -- Dumping data for table `about_me`
 --
 
-INSERT INTO `about_me` (`id`, `name`, `role`, `intro_title`, `intro_text`, `years_of_experience`, `projects_completed`, `clients_worldwide`, `what_i_do`, `image`, `resume`, `status`, `date`) VALUES
-(1, 'Victor Osaronwafor', 'Software Developer', 'HI, I\'M A FREELANCER', 'I\'m a software engineer specializing in scalable web apps.', 5, 50, 30, 'I design and develop high-performance websites, mobile apps, and enterprise software tailored to business needs. My expertise spans full-stack web development, UI/UX design, e-commerce solutions, legacy system modernization, and high-tech software development. From custom portals to AI-powered applications, I build robust and scalable digital solutions that drive growth and efficiency.', '677cd6c16e2a0.jpg', '677741d361096.pdf', 0, '2025-01-03 01:48:48');
+INSERT INTO `about_me` (`id`, `name`, `role`, `intro_title`, `intro_text`, `years_of_experience`, `projects_completed`, `clients_worldwide`, `what_i_do`, `pro_summary`, `skills`, `education`, `awards`, `certifications`, `languages`, `interest`, `github_link`, `image`, `resume`, `status`, `date`) VALUES
+(1, 'Victor Osaronwafor', 'Software Developer', 'HI, I\'M A FREELANCER', 'I\'m a software engineer specializing in scalable web apps.', 5, 50, 31, 'I design and develop high-performance websites, mobile apps, and enterprise software tailored to business needs. My expertise spans full-stack web development, UI/UX design, e-commerce solutions, legacy system modernization, and high-tech software development. From custom portals to AI-powered applications, I build robust and scalable digital solutions that drive growth and efficiency.', '<p>Summarise your career here. You can make a PDF version of your resume using our free Sketch template here. Donec quam felis, ultricies nec, pellentesque eu. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh.</p>', '<div>\r\n<h6><strong>Technical</strong></h6>\r\n<ul>\r\n<li>JavaScript/React/Vue</li>\r\n<li>Python/Ruby/PHP</li>\r\n<li>Node.js/ASP.NET</li>\r\n<li>PostgreSQL/MySQL</li>\r\n<li>Object-oriented design</li>\r\n<li>Design and implement database structures</li>\r\n<li>Lead and deliver complex software systems</li>\r\n</ul>\r\n</div>\r\n<div>\r\n<h6><br>Professional</h6>\r\n<ul>\r\n<li>Effective communication</li>\r\n<li>Team player</li>\r\n<li>Strong problem solver</li>\r\n<li>Good time management</li>\r\n</ul>\r\n</div>', '<div>\r\n<div>\r\n<ul>\r\n<li>MSc in Computer Science University College London</li>\r\n<li>BSc Maths and Physics Imperial College London</li>\r\n</ul>\r\n</div>\r\n</div>', '<div>\r\n<div>\r\n<ul>\r\n<li>Albert Einstein Award</li>\r\n<li>Loretta Award for the Best Software Developer</li>\r\n<li>Best Programmer Award in Germany</li>\r\n<li>Best Technovator Award</li>\r\n</ul>\r\n</div>\r\n</div>', '<div>\r\n<div>\r\n<ul>\r\n<li>Udemy Course</li>\r\n<li>PHP Certified Expert LinkedIn</li>\r\n</ul>\r\n</div>\r\n</div>', '<ul>\r\n<li>English(Native)</li>\r\n<li>Spanish (Professional)</li>\r\n</ul>', '<ul>\r\n<li>Climbing</li>\r\n<li>Snowboarding</li>\r\n<li>Photography</li>\r\n<li>Travelling</li>\r\n</ul>', 'github.com/vhickeys', '67a4866f90ccd.jpg', '67a4866f90cd4.pdf', 0, '2025-01-03 01:48:48');
 
 -- --------------------------------------------------------
 
@@ -74,6 +82,32 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `description`, `status`, `date`)
 (2, 'UI/UX Designs', 'uiux-designs', 'UI/UX Designs', 0, '2024-12-16 06:52:19'),
 (4, 'Mobile App Development', 'mobile-app-development', 'Mobile App Development', 0, '2024-12-16 22:50:33'),
 (5, 'Website Development', 'website-development', 'Website Development', 0, '2024-12-16 23:16:48');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `post_id`, `first_name`, `last_name`, `email`, `message`, `date`) VALUES
+(1, 2, 'Victor', 'Osaronwafor', 'victorosaronwafor@gmail.com', 'Nice Post', '2025-02-06 16:45:08'),
+(2, 2, 'Victor', 'Osaronwafor', 'victorosaronwafor@gmail.com', 'nice post!', '2025-02-06 16:45:21'),
+(3, 2, 'Victor', 'Osaronwafor', 'victorosaronwafor@gmail.com', 'success', '2025-02-06 16:48:58'),
+(4, 2, 'Joshua', 'James', 'admin@fontainebleaupl.com', '            SomethingWentWrong();\n', '2025-02-06 17:08:31');
 
 -- --------------------------------------------------------
 
@@ -345,6 +379,12 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `contacts`
 --
 ALTER TABLE `contacts`
@@ -419,6 +459,12 @@ ALTER TABLE `about_me`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `contacts`

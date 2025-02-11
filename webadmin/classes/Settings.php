@@ -9,7 +9,7 @@ class Settings
         $this->db = $database->getConnection();
     }
 
-    public function modifySettings($wallet_address, $about, $phone, $email, $office_address, $withdrawal_error, $payment_notice, $facebook, $instagram, $twitter, $linkedIn, $youtube, $image, $old_image, $status, $id)
+    public function modifySettings($phone, $email, $office_address, $facebook, $instagram, $twitter, $linkedIn, $youtube, $whatsapp, $whatsapp_url, $image, $old_image, $status, $id)
     {
         $image_name = $image['name'];
         $image_size = $image['size'];
@@ -28,18 +28,18 @@ class Settings
                 header("location: ../settings.php");
                 exit(0);
             } else {
-                $olDestination = "../../img/settings/$old_image";
+                $olDestination = "../../assets/images/settings/$old_image";
 
                 if (file_exists($olDestination)) {
                     unlink($olDestination);
                 }
 
-                $destination = "../../img/settings/$filename";
+                $destination = "../../assets/images/settings/$filename";
                 move_uploaded_file($image_tmp_name, $destination);
 
-                $sql = "UPDATE settings SET wallet_address=?, about=?, phone=?, email=?, office_address=?, withdrawal_error=?, payment_notice=?, facebook=?, instagram=?, twitter=?, linkedIn=?, youtube=?, logo=?, status=? WHERE id=?";
+                $sql = "UPDATE settings SET phone=?, email=?, office_address=?, facebook=?, instagram=?, twitter=?, linkedIn=?, youtube=?, whatsapp=?, whatsapp_url=?, logo=?, status=? WHERE id=?";
                 $statement = $this->db->prepare($sql);
-                $statement->execute([$wallet_address, $about, $phone, $email, $office_address, $withdrawal_error, $payment_notice, $facebook, $instagram, $twitter, $linkedIn, $youtube, $filename, $status, $id]);
+                $statement->execute([$phone, $email, $office_address, $facebook, $instagram, $twitter, $linkedIn, $youtube, $whatsapp, $whatsapp_url, $filename, $status, $id]);
 
                 if ($statement) {
                     $_SESSION['successMessage'] = "Settings Updated Successfully!";
@@ -52,9 +52,9 @@ class Settings
                 }
             }
         } else {
-            $sql = "UPDATE settings SET wallet_address=?, about=?, phone=?, email=?, office_address=?, withdrawal_error=?, payment_notice=?, facebook=?, instagram=?, twitter=?, linkedIn=?, youtube=?, status=? WHERE id=?";
+            $sql = "UPDATE settings SET phone=?, email=?, office_address=?, facebook=?, instagram=?, twitter=?, linkedIn=?, youtube=?, whatsapp=?, whatsapp_url=?, status=? WHERE id=?";
             $statement = $this->db->prepare($sql);
-            $statement->execute([$wallet_address, $about, $phone, $email, $office_address, $withdrawal_error, $payment_notice, $facebook, $instagram, $twitter, $linkedIn, $youtube, $status, $id]);
+            $statement->execute([$phone, $email, $office_address, $facebook, $instagram, $twitter, $linkedIn, $youtube, $whatsapp, $whatsapp_url, $status, $id]);
 
             if ($statement) {
                 $_SESSION['successMessage'] = "Settings Updated Successfully!";

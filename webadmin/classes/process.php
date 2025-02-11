@@ -32,15 +32,15 @@ if (isset($_GET['action'])) {
             }
             break;
 
-        case 'contactSubmit':
+        case 'create-contact':
             if (isset($_POST)) {
                 $name = $_POST['name'];
                 $email = $_POST['email'];
                 $phone = $_POST['phone'];
-                $subject = $_POST['subject'];
+                $location = $_POST['location'];
                 $message = $_POST['message'];
 
-                $contact->contactSubmit($name, $email, $phone, $subject, $message);
+                $contact->contactSubmit($name, $email, $phone, $location, $message);
             }
             break;
 
@@ -374,27 +374,23 @@ if (isset($_GET['action'])) {
         case 'settings':
             if (isset($_POST['submit-settings'])) {
 
-                $wallet_address = $_POST['wallet_address'];
-                $about = $_POST['about'];
-
                 $phone = $_POST['phone'];
                 $email = $_POST['email'];
                 $office_address = $_POST['office_address'];
-
-                $withdrawal_error = $_POST['withdrawal_error'];
-                $payment_notice = $_POST['payment_notice'];
 
                 $facebook = $_POST['facebook'];
                 $instagram = $_POST['instagram'];
                 $twitter = $_POST['twitter'];
                 $linkedIn = $_POST['linkedIn'];
                 $youtube = $_POST['youtube'];
+                $whatsapp = $_POST['whatsapp'];
+                $whatsapp_url = $_POST['whatsapp_url'];
 
                 $logo = $_FILES['logo'];
                 $old_image = $_POST['old_image'];
                 $status = $_POST['status'] == true ? '1' : '0';
 
-                $settings->modifySettings($wallet_address, $about, $phone, $email, $office_address, $withdrawal_error, $payment_notice, $facebook, $instagram, $twitter, $linkedIn, $youtube, $logo, $old_image, $status, "1");
+                $settings->modifySettings($phone, $email, $office_address, $facebook, $instagram, $twitter, $linkedIn, $youtube, $whatsapp, $whatsapp_url, $logo, $old_image, $status, "1");
             }
             break;
 

@@ -1,13 +1,21 @@
 id
-post_id
-first_name
-last_name
+phone
 email
-message
+office_address
+facebook
+instagram
+twitter
+linkedIn
+youtube
+whatsapp
+whatsapp_url
 
 
-resume
-about, education, hobbies
-contact
-comments on post
+
+
+
+phone
+address
 email
+whatsapp_number
+whatsapp_url
