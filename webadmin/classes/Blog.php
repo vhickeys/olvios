@@ -9,7 +9,7 @@ class Blog
         $this->db = $database->getConnection();
     }
 
-    public function createPost($title, $slug, $category, $caption, $quote, $description, $image, $meta_title, $meta_keywords, $meta_description, $status, $author)
+    public function createPost($title, $slug, $category, $caption, $quote, $quoted_by, $description, $image, $video_url, $conclusion, $meta_title, $meta_keywords, $meta_description, $status, $author)
     {
 
         $process_image = image_processing($image);
@@ -38,9 +38,9 @@ class Blog
 
                 move_my_uploaded_file($image_tmp_name, "../../assets/images/posts/$image_filename");
 
-                $sql = "INSERT INTO posts (title, slug, category, caption, quote, description, image, meta_title, meta_keywords, meta_description, status, author) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+                $sql = "INSERT INTO posts (title, slug, category, caption, quote, quoted_by, description, image, video_url, conclusion, meta_title, meta_keywords, meta_description, status, author) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 $statement = $this->db->prepare($sql);
-                $statement->execute([$title, $slug, $category, $caption, $quote, $description, $image_filename, $meta_title, $meta_keywords, $meta_description, $status, $author]);
+                $statement->execute([$title, $slug, $category, $caption, $quote, $quoted_by, $description, $image_filename, $video_url, $conclusion, $meta_title, $meta_keywords, $meta_description, $status, $author]);
 
                 if ($statement) {
                     $_SESSION['successMessage'] = "Post Created Successfully!";
@@ -63,9 +63,9 @@ class Blog
                 exit(0);
             } else {
 
-                $sql = "INSERT INTO posts (title, slug, category, caption, quote, description, meta_title, meta_keywords, meta_description, status, author) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+                $sql = "INSERT INTO posts (title, slug, category, caption, quote, quoted_by, description, video_url, conclusion, meta_title, meta_keywords, meta_description, status, author) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 $statement = $this->db->prepare($sql);
-                $statement->execute([$title, $slug, $category, $caption, $quote, $description, $meta_title, $meta_keywords, $meta_description, $status, $author]);
+                $statement->execute([$title, $slug, $category, $caption, $quote, $quoted_by, $description, $video_url, $conclusion, $meta_title, $meta_keywords, $meta_description, $status, $author]);
 
                 if ($statement) {
                     $_SESSION['successMessage'] = "Post Created Successfully!";
@@ -80,7 +80,7 @@ class Blog
         }
     }
 
-    public function editPost($post_id, $title, $slug, $category, $caption, $quote, $description, $image, $old_image, $meta_title, $meta_keywords, $meta_description, $status, $author)
+    public function editPost($post_id, $title, $slug, $category, $caption, $quote, $quoted_by, $description, $image, $old_image, $video_url, $conclusion, $meta_title, $meta_keywords, $meta_description, $status, $author)
     {
 
         $process_image = image_processing($image);
@@ -105,9 +105,9 @@ class Blog
 
                 unlink_and_move("../../assets/images/posts/$old_image", "../../assets/images/posts/$image_filename", $image_tmp_name);
 
-                $sql = "UPDATE posts SET title=?, slug=?, category=?, caption=?, quote=?, description=?, image=?, meta_title=?, meta_keywords=?, meta_description=?, status=?, author=? WHERE id=?";
+                $sql = "UPDATE posts SET title=?, slug=?, category=?, caption=?, quote=?, quoted_by=?, description=?, image=?, video_url=?, conclusion=?, meta_title=?, meta_keywords=?, meta_description=?, status=?, author=? WHERE id=?";
                 $statement = $this->db->prepare($sql);
-                $statement->execute([$title, $slug, $category, $caption, $quote, $description, $image_filename, $meta_title, $meta_keywords, $meta_description, $status, $author, $post_id]);
+                $statement->execute([$title, $slug, $category, $caption, $quote, $quoted_by, $description, $image_filename, $video_url, $conclusion, $meta_title, $meta_keywords, $meta_description, $status, $author, $post_id]);
 
                 if ($statement) {
                     $_SESSION['successMessage'] = "Post Updated Successfully!";
@@ -126,9 +126,9 @@ class Blog
                 exit(0);
             } else {
 
-                $sql = "UPDATE posts SET title=?, slug=?, category=?, caption=?, quote=?, description=?, meta_title=?, meta_keywords=?, meta_description=?, status=?, author=? WHERE id=?";
+                $sql = "UPDATE posts SET title=?, slug=?, category=?, caption=?, quote=?, quoted_by=?, description=?, video_url=?, conclusion=?, meta_title=?, meta_keywords=?, meta_description=?, status=?, author=? WHERE id=?";
                 $statement = $this->db->prepare($sql);
-                $statement->execute([$title, $slug, $category, $caption, $quote, $description, $meta_title, $meta_keywords, $meta_description, $status, $author, $post_id]);
+                $statement->execute([$title, $slug, $category, $caption, $quote, $quoted_by, $description, $video_url, $conclusion, $meta_title, $meta_keywords, $meta_description, $status, $author, $post_id]);
 
                 if ($statement) {
                     $_SESSION['successMessage'] = "Post Updated Successfully!";

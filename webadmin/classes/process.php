@@ -133,9 +133,12 @@ if (isset($_GET['action'])) {
                 $category = $_POST['category'];
                 $caption = $_POST['caption'];
                 $quote = $_POST['quote'];
+                $quoted_by = $_POST['quoted_by'];
 
                 $description = $_POST['description'];
                 $image = $_FILES['image'];
+                $video_url = $_POST['video_url'];
+                $conclusion = $_POST['conclusion'];
                 $meta_title = $_POST['meta_title'];
                 $meta_keywords = $_POST['meta_keywords'];
                 $meta_description = $_POST['meta_description'];
@@ -143,7 +146,7 @@ if (isset($_GET['action'])) {
                 $status = $_POST['status'] == true ? '1' : '0';
                 $author = $_POST['author'];
 
-                $blog->createPost($title, $slug, $category, $caption, $quote, $description, $image, $meta_title, $meta_keywords, $meta_description, $status, $author);
+                $blog->createPost($title, $slug, $category, $caption, $quote, $quoted_by, $description, $image, $video_url, $conclusion, $meta_title, $meta_keywords, $meta_description, $status, $author);
             }
             break;
 
@@ -155,10 +158,13 @@ if (isset($_GET['action'])) {
                 $category = $_POST['category'];
                 $caption = $_POST['caption'];
                 $quote = $_POST['quote'];
+                $quoted_by = $_POST['quoted_by'];
 
                 $description = $_POST['description'];
                 $image = $_FILES['image'];
                 $old_image = $_POST['old_image'];
+                $video_url = $_POST['video_url'];
+                $conclusion = $_POST['conclusion'];
                 $meta_title = $_POST['meta_title'];
                 $meta_keywords = $_POST['meta_keywords'];
                 $meta_description = $_POST['meta_description'];
@@ -166,7 +172,7 @@ if (isset($_GET['action'])) {
                 $status = $_POST['status'] == true ? '1' : '0';
                 $author = $_POST['author'];
 
-                $blog->editPost($post_id, $title, $slug, $category, $caption, $quote, $description, $image, $old_image, $meta_title, $meta_keywords, $meta_description, $status, $author);
+                $blog->editPost($post_id, $title, $slug, $category, $caption, $quote, $quoted_by, $description, $image, $old_image, $video_url, $conclusion, $meta_title, $meta_keywords, $meta_description, $status, $author);
             }
             break;
 

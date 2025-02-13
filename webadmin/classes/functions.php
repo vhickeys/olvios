@@ -181,6 +181,32 @@ function logoutUser()
     }
 }
 
+function timeAgo($timestamp) {
+    $timeAgo = strtotime($timestamp);
+    $currentTime = time();
+    $timeDifference = $currentTime - $timeAgo;
+    $seconds = $timeDifference;
+
+    $intervals = [
+        31536000 => 'year',
+        2592000 => 'month',
+        604800 => 'week',
+        86400 => 'day',
+        3600 => 'hour',
+        60 => 'minute',
+        1 => 'second'
+    ];
+
+    foreach ($intervals as $secondsPerUnit => $unit) {
+        if ($seconds >= $secondsPerUnit) {
+            $count = floor($seconds / $secondsPerUnit);
+            return $count . ' ' . $unit . ($count > 1 ? 's' : '') . ' ago';
+        }
+    }
+
+    return 'Just now';
+}
+
 function image_processing($image)
 {
     $image_name = $image['name'];

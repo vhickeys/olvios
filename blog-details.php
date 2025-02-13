@@ -29,13 +29,14 @@ include_once 'components/color-switcher.php';
                     <?= $blog_post_details['title'] ?? '' ?>
                 </h3>
                 <div class="d-flex flex-wrap align-items-center gap-2 gap-md-3 mt-3">
-                    <span class="n3-color fs-eight">Published <span class="n4-color">2</span> days ago</span>
+                    <span class="n3-color fs-eight"><span class="n4-color">Published</span>
+                        <?= timeAgo($blog_post_details['date']) ?></span>
                     <ul class="d-flex align-items-center gap-3">
                         <li class="n3-color fs-eight">
                             <span class="n4-color">2</span> min read
                         </li>
                         <li class="n3-color fs-eight">
-                            <span class="n4-color">2</span> comments
+                            <span class="n4-color"><?= $commentsCount ?? '0' ?></span> comments
                         </li>
                     </ul>
                 </div>
@@ -59,56 +60,81 @@ include_once 'components/color-switcher.php';
                 </h4>
                 <div class="d-flex gap-2 gap-md-3 align-items-center mt-3 mt-md-6">
                     <div class="line3"></div>
-                    <span class="n4-color fs-eight">John Romero</span>
+                    <span class="n4-color fs-eight"><?= $blog_post_details['quoted_by'] ?? '' ?></span>
                 </div>
             </div>
 
         <?php endif; ?>
 
-        <div data-aos="fade-up" class="mb-8 mb-md-15">
-            <h3 class="details-description n5-color fs-two">Video Example</h3>
-            <p class="details-description n5-color fs-eight my-3 my-md-5">
-                Watch my Youtube tutorial on this for further explanation. Please don't forget to susbscribe 🥰😍❤💝💘🖤🤎💚✔ to my
-                Youtube channel.
-            </p>
-            <div class="overflow-hidden position-relative">
-                <img src="assets/images/blog2.png" alt="Victor Osaronwafor Olvios" class="blog-details-img" />
-                <div class="video-btn">
-                    <a href="https://www.youtube.com/watch?v=AVHozwCteL4" class="glightbox3 display-two">
-                        <i class="ph-fill ph-play-circle"></i>
-                    </a>
-                </div>
+        <?php if (!empty($blog_post_details['video_url'])): ?>
 
-                <div class="wrapper">
-                    <div class="video-main">
-                        <div class="promo-video">
-                            <div class="waves-block">
-                                <div class="waves wave-1"></div>
-                                <div class="waves wave-2"></div>
-                                <div class="waves wave-3"></div>
+            <div data-aos="fade-up" class="mb-4 mb-md-10">
+                <h3 class="details-description n5-color fs-two">Video Example</h3>
+                <p class="details-description n5-color fs-eight my-3 my-md-5">
+                    Watch my Youtube tutorial on this for further explanation. Please don't forget to susbscribe
+                    🥰😍❤💝💘🖤🤎💚✔ to my
+                    Youtube channel.
+                </p>
+                <?php
+                // Function to extract YouTube video ID from URL
+                function getYouTubeVideoID($url)
+                {
+                    preg_match("/(?:youtu\.be\/|youtube\.com\/(?:.*v=|.*\/|.*embed\/|.*shorts\/|.*watch\?v=))([a-zA-Z0-9_-]+)/", $url, $matches);
+                    return $matches[1] ?? null;
+                }
+
+                $post_image = $blog_post_details['image'] ?? '';
+                $video_url = $blog_post_details['video_url'] ?? '';
+                $video_id = getYouTubeVideoID($video_url);
+                $thumbnail_url = $video_id ? "https://img.youtube.com/vi/{$video_id}/maxresdefault.jpg" : "assets/images/posts/$post_image";
+                ?>
+
+                <div class="overflow-hidden position-relative">
+                    <img src="<?= $thumbnail_url ?>" alt="Video Thumbnail" class="blog-details-img" />
+                    <?php if ($video_id): ?>
+                        <div class="video-btn">
+                            <a href="<?= $video_url ?>" class="glightbox3 display-two">
+                                <i class="ph-fill ph-play-circle"></i>
+                            </a>
+                        </div>
+
+                        <div class="wrapper">
+                            <div class="video-main">
+                                <div class="promo-video">
+                                    <div class="waves-block">
+                                        <div class="waves wave-1"></div>
+                                        <div class="waves wave-2"></div>
+                                        <div class="waves wave-3"></div>
+                                    </div>
+                                </div>
+                                <a href="<?= $video_url ?>" class="video glightbox3"><i class="ph-fill ph-play"></i></a>
                             </div>
                         </div>
-                        <a href="https://www.youtube.com/watch?v=AVHozwCteL4" class="video glightbox3"><i
-                                class="ph-fill ph-play"></i></a>
-                    </div>
+                    <?php endif; ?>
                 </div>
+
             </div>
-            <h3 class="details-description n5-color fs-five mt-5 mt-md-10">
-                Conclusion
-            </h3>
-            <p class="details-description n5-color fs-eight mt-3 mt-md-5">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit lobortis
-                arcu enim urna adipiscing praesent velit viverra sit semper
-                lorem eu cursus vel hendrerit elementum morbi curabitur etiam
-                nibh justo, lorem aliquet donec sed sit mi dignissim at ante
-                massa mattis.
-            </p>
-        </div>
+
+        <?php endif; ?>
+
+        <?php if (!empty($blog_post_details['conclusion'])): ?>
+
+            <div class="mb-8 mb-md-15">
+                <h3 class="details-description n5-color fs-five mt-5 mt-md-10">
+                    Conclusion
+                </h3>
+                <p class="details-description n5-color fs-eight mt-3 mt-md-5">
+                    <?= $blog_post_details['conclusion'] ?? '' ?>
+                </p>
+            </div>
+
+        <?php endif; ?>
+
 
         <div data-aos="fade-up" class="mb-8 mb-md-15 py-4 py-md-8 brn4-y">
             <div class="d-flex flex-wrap gap-3 align-items-center justify-content-between">
                 <div class="d-flex flex-wrap gap-4 gap-md-8 align-items-center">
-                    <h4 class="fs-five fw-semibold n5-color">Tag:</h4>
+                    <!-- <h4 class="fs-five fw-semibold n5-color">Tag:</h4>
                     <div class="d-flex flex-wrap align-items-center gap-2">
                         <a href="javascript:void(0)"
                             class="bgn2-color n4-color py-2 py-md-3 px-3 px-md-5 d-block rounded-pill brn4">Business</a>
@@ -120,19 +146,19 @@ include_once 'components/color-switcher.php';
                             class="bgn2-color n4-color py-2 py-md-3 px-3 px-md-5 d-block rounded-pill brn4">Design</a>
                         <a href="javascript:void(0)"
                             class="bgn2-color n4-color py-2 py-md-3 px-3 px-md-5 d-block rounded-pill brn4">Strategy</a>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="d-flex flex-wrap justify-content-center gap-2 align-items-center">
-                    <a href="javascript:void(0)" class="blog-social-icon brn4">
+                    <a href="<?= $webSetting['facebook'] ?: '' ?>" class="blog-social-icon brn4">
                         <i class="ph ph-facebook-logo p1-color"></i>
                     </a>
-                    <a href="javascript:void(0)" class="blog-social-icon brn4">
+                    <a href="<?= $webSetting['instagram'] ?: '' ?>" class="blog-social-icon brn4">
                         <i class="ph ph-instagram-logo p1-color"></i>
                     </a>
-                    <a href="javascript:void(0)" class="blog-social-icon brn4">
+                    <a href="<?= $webSetting['twitter'] ?: '' ?>" class="blog-social-icon brn4">
                         <i class="ph ph-x-logo p1-color"></i>
                     </a>
-                    <a href="javascript:void(0)" class="blog-social-icon brn4">
+                    <a href="<?= $webSetting['linkedIn'] ?: '' ?>" class="blog-social-icon brn4">
                         <i class="ph ph-linkedin-logo p1-color"></i>
                     </a>
                 </div>
