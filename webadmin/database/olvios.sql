@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2025 at 04:52 PM
+-- Generation Time: Feb 12, 2025 at 04:00 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -107,7 +107,13 @@ INSERT INTO `comments` (`id`, `post_id`, `first_name`, `last_name`, `email`, `me
 (1, 2, 'Victor', 'Osaronwafor', 'victorosaronwafor@gmail.com', 'Nice Post', '2025-02-06 16:45:08'),
 (2, 2, 'Victor', 'Osaronwafor', 'victorosaronwafor@gmail.com', 'nice post!', '2025-02-06 16:45:21'),
 (3, 2, 'Victor', 'Osaronwafor', 'victorosaronwafor@gmail.com', 'success', '2025-02-06 16:48:58'),
-(4, 2, 'Joshua', 'James', 'admin@fontainebleaupl.com', '            SomethingWentWrong();\n', '2025-02-06 17:08:31');
+(4, 2, 'Joshua', 'James', 'admin@fontainebleaupl.com', '            SomethingWentWrong();\n', '2025-02-06 17:08:31'),
+(5, 2, 'Victor', 'Osaronwafor', 'victorosaronwafor@gmail.com', 'victorosaronwafor@gmail.com', '2025-02-11 10:22:14'),
+(6, 2, 'Mary', 'Clement', 'maryclems9@gmail.com', 'This post is awesome!', '2025-02-11 10:48:03'),
+(7, 2, 'Victor', 'Osaronwafor', 'victorosaronwafor@gmail.com', 'webadmin/classes/process.php?action=get-comments&post_id=', '2025-02-11 11:02:29'),
+(8, 2, 'Victor', 'Osaronwafor', 'victorosaronwafor@gmail.com', '08188059316', '2025-02-11 11:07:22'),
+(9, 2, 'Victor', 'Osaronwafor', 'victorosaronwafor@gmail.com', '08188059316', '2025-02-11 11:08:30'),
+(10, 1, 'Victor', 'Legend', 'victorosaronwafor@gmail.com', 'Nice blog Post', '2025-02-11 15:11:50');
 
 -- --------------------------------------------------------
 
@@ -120,10 +126,18 @@ CREATE TABLE `contacts` (
   `name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
-  `subject` text DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
   `message` longtext DEFAULT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `name`, `email`, `phone`, `location`, `message`, `date`) VALUES
+(1, 'Victor Olamide Osaronwafor', 'victorosaronwafor@gmail.com', '08188059316', '', 'I need your services!', '2025-02-11 11:39:35'),
+(2, 'Victory Eseohe', 'victorosaronwafor@gmail.com', '08188059316', 'Abuja', 'I want to build a portal', '2025-02-11 11:40:48');
 
 -- --------------------------------------------------------
 
@@ -250,18 +264,16 @@ INSERT INTO `products` (`id`, `category_id`, `name`, `slug`, `caption`, `price`,
 
 CREATE TABLE `settings` (
   `id` int(11) NOT NULL,
-  `wallet_address` text DEFAULT NULL,
-  `about` longtext DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `office_address` longtext DEFAULT NULL,
-  `withdrawal_error` text DEFAULT NULL,
-  `payment_notice` text DEFAULT NULL,
   `facebook` varchar(255) DEFAULT NULL,
   `instagram` varchar(255) DEFAULT NULL,
   `twitter` varchar(255) DEFAULT NULL,
   `linkedIn` varchar(255) DEFAULT NULL,
   `youtube` varchar(255) DEFAULT NULL,
+  `whatsapp` varchar(255) DEFAULT NULL,
+  `whatsapp_url` text DEFAULT NULL,
   `logo` varchar(255) DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 0,
   `date` datetime NOT NULL DEFAULT current_timestamp()
@@ -271,8 +283,8 @@ CREATE TABLE `settings` (
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` (`id`, `wallet_address`, `about`, `phone`, `email`, `office_address`, `withdrawal_error`, `payment_notice`, `facebook`, `instagram`, `twitter`, `linkedIn`, `youtube`, `logo`, `status`, `date`) VALUES
-(1, 'DxPEQkYZZrbyqrAQVukxtFR7JYrHcnhdC9UUQ1SSozvZ', 'At TradeEclipse, we believe that the best endorsement comes from satisfied clients. It\'s no surprise that many of our new clients are referrals from our current customers.', '', 'support@tradeeclipse.com', '795 South Park Avenue,\r\nMelbourne, Australia', 'Unable to withdraw! Please contact support@tradeeclipse.com for your Pin', 'Copy this wallet address to make payment, after making payment, upload the proof of payment on the \"proof section\".\r\nAfter confirmation, your current investment will be reflected.', 'facebook.com', 'instagram.com', 'twitter.com', 'linkedIn.com', 'youtube.com', '1723898864.png', 0, '2024-02-23 18:26:51');
+INSERT INTO `settings` (`id`, `phone`, `email`, `office_address`, `facebook`, `instagram`, `twitter`, `linkedIn`, `youtube`, `whatsapp`, `whatsapp_url`, `logo`, `status`, `date`) VALUES
+(1, '08188059316', 'victorosaronwafor@gmail.com', 'F.C.T Abuja', 'facebook.com', 'instagram.com', 'twitter.com', 'linkedIn.com', 'youtube.com', '08188059316', 'wa.me', '1739289261.png', 0, '2024-02-23 18:26:51');
 
 -- --------------------------------------------------------
 
@@ -464,13 +476,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `payments`

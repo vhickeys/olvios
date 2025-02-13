@@ -4,13 +4,13 @@ require 'classes/functions.php';
 
 authCheck();
 
-$title = "View All Posts";
+$title = "View Contact Requests";
 include_once 'components/head.php';
 include_once 'components/nav-header.php';
 include_once 'components/header.php';
 include_once 'components/sidebar.php';
 
-$posts = $blog->getPosts();
+$contacts = $contact->getAllContacts();
 ?>
 
 <!--**********************************
@@ -22,7 +22,7 @@ $posts = $blog->getPosts();
     <div class="page-titles">
         <ol class="breadcrumb">
             <li>
-                <h5 class="bc-title">View All Posts</h5>
+                <h5 class="bc-title">View All contacts</h5>
             </li>
             <li class="breadcrumb-item"><a href="index.php">
                     <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,24 +43,24 @@ $posts = $blog->getPosts();
             include_once 'components/alert_messages.php';
             ?>
 
-            <form method="post" action="classes/process.php?action=delete-post">
-                <div class="modal fade" id="deletePostModal" tabindex="-1" aria-labelledby="deletePostModal"
+            <form method="post" action="classes/process.php?action=delete-contact">
+                <div class="modal fade" id="deleteContactModal" tabindex="-1" aria-labelledby="deleteContactModal"
                     aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="">Delete This Post</h5>
+                                <h5 class="modal-title" id="">Delete This Contact</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <input type="hidden" id="postModalId" name="postModalId">
-                                <h4>Are you sure you want to delete this Post?</h4>
+                                <input type="hidden" id="contactModalId" name="contactModalId">
+                                <h4>Are you sure you want to delete this contact?</h4>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" name="delete-post" class="btn btn-danger">Delete
-                                    Post</button>
+                                <button type="submit" name="delete-contact" class="btn btn-danger">Delete
+                                    contact</button>
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,7 @@ $posts = $blog->getPosts();
             <div class="col-xl-12 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">View All Posts Created</h4>
+                        <h4 class="card-title">View All Contacts Created</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -78,12 +78,11 @@ $posts = $blog->getPosts();
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Title</th>
-                                        <th>Category</th>
-                                        <th>Comments</th>
-                                        <th>Image</th>
-                                        <th>Status</th>
-                                        <th>Author</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Location</th>
+                                        <th>Message</th>
                                         <th>Date Added</th>
                                         <th>Actions</th>
                                     </tr>
@@ -91,50 +90,32 @@ $posts = $blog->getPosts();
                                 <tbody>
                                     <?php
                                     $id = 1;
-                                    if ($posts == []) {
+                                    if ($contacts == []) {
                                     } else {
-                                        foreach ($posts as $post) {
-                                    ?>
+                                        foreach ($contacts as $contact) {
+                                            ?>
 
                                             <tr>
                                                 <td><?= $id ?></td>
-                                                <td class="text-info text-decoration-underline"><a href="../blog-details.php?read=<?= $post['slug'] ?>"><?= $post['title'] ?? '' ?></a></td>
-                                                <td class="text-primary"><?= $post['category'] ?></td>
-                                                <td class="text-info"><?= $blog->postCommentsCount($post['id']) ?></td>
-                                                
-                                                <td>
-                                                    <?php if ($post['image'] != ""): ?>
-                                                        <img class="shadow" src="../assets/images/posts/<?= $post['image'] ?>" alt="" width="100">
-                                                    <?php else: ?>
-                                                        <button class="btn btn-danger btn-sm" disabled>No Image Uploaded!</button>
-                                                    <?php endif; ?>
+                                                <td class="text-info"><?= $contact['name'] ?></td>
+                                                <td class="text-decoration-underline text-danger"><a
+                                                        href="mailto:<?= $contact['email'] ?? '' ?>"><?= $contact['email'] ?? '' ?></a>
                                                 </td>
-
-                                                <td>
-                                                    <?php if ($post['status'] == "1"): ?>
-                                                        <button class="btn btn-danger btn-sm" disabled>Hidden</button>
-                                                    <?php else: ?>
-                                                        <button class="btn btn-success btn-sm" disabled>Visible</button>
-                                                    <?php endif; ?>
-                                                </td>
-
-                                                <td><?= $post['author'] ?></td>
-                                                <td><?= date('d-M-Y', strtotime($post['date'])) ?></td>
+                                                <td class="text-info"><?= $contact['phone'] ?></td>
+                                                <td class="text-info"><?= $contact['location'] ?></td>
+                                                <td class="text-success"><?= $contact['message'] ?? '' ?></td>
+                                                <td><?= date('H:i:s d-M-Y', strtotime($contact['date'])) ?></td>
                                                 <td>
                                                     <div class="d-flex">
-                                                        <a href="edit-post.php?postId=<?= $post['id'] ?>"
-                                                            class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-
-                                                        <?php if ($_SESSION['user_data']['role'] == "2") : ?>
-                                                            <button class="btn btn-danger shadow btn-xs sharp delete-post" value="<?= $post['id'] ?>"><i class="fa fa-trash"></i></button>
+                                                        <?php if ($_SESSION['user_data']['role'] == "2"): ?>
+                                                            <button class="btn btn-danger shadow btn-xs sharp delete-contact"
+                                                                value="<?= $contact['id'] ?>"><i class="fa fa-trash"></i></button>
                                                         <?php endif; ?>
-
                                                     </div>
                                                 </td>
                                             </tr>
 
-                                    <?php
+                                            <?php
                                             $id++;
                                         }
                                     }

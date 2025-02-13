@@ -67,20 +67,20 @@ include_once 'components/color-switcher.php';
                       <div class="post-thumb">
                         <div class="post-thumb-inner">
                           <img src="assets/images/portfolios/<?= $allPortfolio['image'] ?? '' ?>"
-                            alt="<?= $allPortfolio['title'] ?? '' ?> | Victor Osaronwafor" class="w-100 p-2" />
+                            alt="<?= $allPortfolio['title'] ?? '' ?> | Victor Osaronwafor Olvios" class="w-100 p-2" />
                         </div>
                       </div>
                       <div class="post-thumb">
                         <div class="post-thumb-inner">
                           <img src="assets/images/portfolios/<?= $allPortfolio['image'] ?? '' ?>"
-                            alt="<?= $allPortfolio['title'] ?? '' ?> | Victor Osaronwafor" class="w-100 p-2" />
+                            alt="<?= $allPortfolio['title'] ?? '' ?> | Victor Osaronwafor Olvios" class="w-100 p-2" />
                         </div>
                       </div>
                     </a>
 
                     <div class="d-flex justify-content-between gap-2 align-items-center pt-4 pt-md-8 px-3 px-md-6">
                       <div>
-                        <div class="d-flex gap-2 align-items-center">
+                        <!-- <div class="d-flex gap-2 align-items-center">
                           <a href="javascript:void(0)"
                             class="n5-color fs-nine px-2 px-md-4 py-1 py-md-2 brn3 rounded-pill fw-medium">React
                             JS</a>
@@ -89,7 +89,7 @@ include_once 'components/color-switcher.php';
                           <a href="javascript:void(0)"
                             class="n5-color fs-nine px-2 px-md-4 py-1 py-md-2 brn3 rounded-pill fw-medium">Web
                             Development</a>
-                        </div>
+                        </div> -->
                         <a href="portfolio-details.php?portId=<?= $allPortfolio['slug'] ?? '' ?>"
                           class="project-title fs-five fw-semibold n5-color mt-3 mt-md-5 d-block">
                           <?= $allPortfolio['title'] ?? '' ?>
@@ -133,20 +133,20 @@ include_once 'components/color-switcher.php';
                         <div class="post-thumb">
                           <div class="post-thumb-inner">
                             <img src="assets/images/portfolios/<?= $cat_portfolio['image'] ?? '' ?>"
-                              alt="<?= $cat_portfolio['title'] ?? '' ?> | Victor Osaronwafor" class="w-100 p-2" />
+                              alt="<?= $cat_portfolio['title'] ?? '' ?> | Victor Osaronwafor Olvios" class="w-100 p-2" />
                           </div>
                         </div>
                         <div class="post-thumb">
                           <div class="post-thumb-inner">
                             <img src="assets/images/portfolios/<?= $cat_portfolio['image'] ?? '' ?>"
-                              alt="<?= $cat_portfolio['title'] ?? '' ?> | Victor Osaronwafor" class="w-100 p-2" />
+                              alt="<?= $cat_portfolio['title'] ?? '' ?> | Victor Osaronwafor Olvios" class="w-100 p-2" />
                           </div>
                         </div>
                       </a>
 
                       <div class="d-flex justify-content-between gap-2 align-items-center pt-4 pt-md-8 px-3 px-md-6">
                         <div>
-                          <div class="d-flex gap-2 align-items-center">
+                          <!-- <div class="d-flex gap-2 align-items-center">
                             <a href="javascript:void(0)"
                               class="n5-color fs-nine px-2 px-md-4 py-1 py-md-2 brn3 rounded-pill fw-medium">React
                               JS</a>
@@ -155,7 +155,7 @@ include_once 'components/color-switcher.php';
                             <a href="javascript:void(0)"
                               class="n5-color fs-nine px-2 px-md-4 py-1 py-md-2 brn3 rounded-pill fw-medium">Web
                               Development</a>
-                          </div>
+                          </div> -->
                           <a href="portfolio-details.php?portId=<?= $cat_portfolio['slug'] ?>"
                             class="project-title fs-five fw-semibold n5-color mt-3 mt-md-5 d-block">
                             <?= $cat_portfolio['title'] ?? '' ?>

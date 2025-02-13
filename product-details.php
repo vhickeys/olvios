@@ -29,7 +29,7 @@ include_once 'components/color-switcher.php';
             <div class="col-xl-6 d-flex align-items-center justify-content-center">
                 <div class="overflow-hidden">
                     <img src="assets/images/products/<?= $product_details['image'] ?? '' ?>"
-                        alt="<?= $product_details['name'] ?? '' ?> | Victor Osaronwafor" class="product-details-img" />
+                        alt="<?= $product_details['name'] ?? '' ?> | Victor Osaronwafor Olvios" class="product-details-img" />
                 </div>
             </div>
         </div>
@@ -105,13 +105,13 @@ include_once 'components/color-switcher.php';
                                 <div class="post-thumb">
                                     <div class="post-thumb-inner">
                                         <img src="assets/images/products/<?= $related_product['image'] ?? '' ?>"
-                                            alt="<?= $related_product['name'] ?? '' ?>" class="product-img w-100 p-2" />
+                                            alt="<?= $related_product['name'] ?? '' ?> | Victor Osaronwafor Olvios" class="product-img w-100 p-2" />
                                     </div>
                                 </div>
                                 <div class="post-thumb">
                                     <div class="post-thumb-inner">
                                         <img src="assets/images/products/<?= $related_product['image'] ?? '' ?>"
-                                            alt="<?= $related_product['name'] ?? '' ?>" class="product-img w-100 p-2" />
+                                            alt="<?= $related_product['name'] ?? '' ?> | Victor Osaronwafor Olvios" class="product-img w-100 p-2" />
                                     </div>
                                 </div>
                             </a>

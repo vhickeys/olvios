@@ -77,7 +77,7 @@ include_once 'components/color-switcher.php';
                 <div class="project-details-content d-flex flex-column gap-8 gap-md-15">
                     <div class="overflow-hidden">
                         <img src="assets/images/portfolios/<?= $portfolio_details['image'] ?>"
-                            alt="<?= $portfolio_details['title'] ?> | Victor Osaronwafor"
+                            alt="<?= $portfolio_details['title'] ?> | Victor Osaronwafor Olvios"
                             class="w-100 portfolio-details-img" />
                     </div>
                     <div data-aos="fade-up">
@@ -92,35 +92,35 @@ include_once 'components/color-switcher.php';
                                 <div class="bgn2-color brn4 p-3 p-md-5">
                                     <span class="p1-color fs-six fw-medium mb-2 d-block">Efficiency</span>
                                     <div class="d-flex align-items-end gap-1 mb-2 mb-md-3">
-                                        <h4 class="fs-three n5-color fw-semibold">20%</h4>
+                                        <h4 class="fs-three n5-color fw-semibold">12%</h4>
                                         <span class="fs-six n4-color fw-medium">up</span>
                                     </div>
                                     <p class="fs-eight n4-color">
-                                        Metric description lorem ipsum dolor sit amet.
+                                        Improved processes and automation increased operational efficiency by 12%.
                                     </p>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-xl-4 col-xxl-3">
                                 <div class="bgn2-color brn4 p-3 p-md-5">
-                                    <span class="p1-color fs-six fw-medium mb-2 d-block">Customer Happy</span>
+                                    <span class="p1-color fs-six fw-medium mb-2 d-block">Customer Satisfaction</span>
                                     <div class="d-flex align-items-end gap-1 mb-2 mb-md-3">
-                                        <h4 class="fs-three n5-color fw-semibold">14%</h4>
+                                        <h4 class="fs-three n5-color fw-semibold">100%</h4>
                                         <span class="fs-six n4-color fw-medium">up</span>
                                     </div>
                                     <p class="fs-eight n4-color">
-                                        Metric description lorem ipsum dolor sit amet.
+                                        Enhanced user experience and support led to a 100% increase in customer happiness.
                                     </p>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-xl-4 col-xxl-3">
                                 <div class="bgn2-color brn4 p-3 p-md-5">
-                                    <span class="p1-color fs-six fw-medium mb-2 d-block">Sales Generated</span>
+                                    <span class="p1-color fs-six fw-medium mb-2 d-block">Sales Growth</span>
                                     <div class="d-flex align-items-end gap-1 mb-2 mb-md-3">
-                                        <h4 class="fs-three n5-color fw-semibold">$130K</h4>
-                                        <!-- <span class="fs-six n4-color fw-medium">k</span> -->
+                                        <h4 class="fs-three n5-color fw-semibold">95%</h4>
                                     </div>
                                     <p class="fs-eight n4-color">
-                                        Metric description lorem ipsum dolor sit amet.
+                                        Increased sales efforts and marketing strategies generated in
+                                        revenue.
                                     </p>
                                 </div>
                             </div>
@@ -128,16 +128,17 @@ include_once 'components/color-switcher.php';
                                 <div class="bgn2-color brn4 p-3 p-md-5">
                                     <span class="p1-color fs-six fw-medium mb-2 d-block">Overall Cost</span>
                                     <div class="d-flex align-items-end gap-1 mb-2 mb-md-3">
-                                        <h4 class="fs-three n5-color fw-semibold">20%</h4>
+                                        <h4 class="fs-three n5-color fw-semibold">65%</h4>
                                         <span class="fs-six n4-color fw-medium">down</span>
                                     </div>
                                     <p class="fs-eight n4-color">
-                                        Metric description lorem ipsum dolor sit amet.
+                                        Optimized workflows and automation helped reduce overall costs by 65%.
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

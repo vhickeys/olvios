@@ -265,8 +265,9 @@ class Blog
         return $result ?: [];
     }
 
-    public function createComment($post_id, $first_name, $last_name, $email, $message) {
-        
+    public function createComment($post_id, $first_name, $last_name, $email, $message)
+    {
+
         $sql = "INSERT INTO comments (post_id, first_name, last_name, email, message) VALUES(?,?,?,?,?)";
         $statement = $this->db->prepare($sql);
         $statement->execute([$post_id, $first_name, $last_name, $email, $message]);
@@ -278,7 +279,38 @@ class Blog
         }
     }
 
-    public function getPostComments($post_id) {
+    public function deleteComment($comment_id)
+    {
+        $sql = "DELETE FROM comments WHERE id=?";
+        $statement = $this->db->prepare($sql);
+        $statement->execute([$comment_id]);
+
+        if ($statement) {
+            $_SESSION['successMessage'] = "Comment Deleted Successfully!";
+            header("location: ../view-comments.php");
+            exit(0);
+        } else {
+            $_SESSION['errorMessage'] = "Something Went Wrong!";
+            header("location: ../view-comments.php");
+            exit(0);
+        }
+    }
+
+    public function getAllPostComments()
+    {
+        $sql = "SELECT c.*, p.title AS post_title, p.slug AS post_slug 
+                FROM comments c 
+                INNER JOIN posts p ON c.post_id = p.id 
+                ORDER BY c.id DESC;
+                ";
+        $statement = $this->db->prepare($sql);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result ?: [];
+    }
+
+    public function getPostComments($post_id)
+    {
         $sql = "SELECT * FROM comments WHERE post_id=? ORDER BY id DESC";
         $statement = $this->db->prepare($sql);
         $statement->bindParam(1, $post_id, PDO::PARAM_INT);
@@ -287,7 +319,8 @@ class Blog
         return $result ?: [];
     }
 
-    public function postCommentsCount($post_id) {
+    public function postCommentsCount($post_id)
+    {
         $sql = "SELECT * FROM comments WHERE post_id=? ORDER BY id DESC";
         $statement = $this->db->prepare($sql);
         $statement->bindParam(1, $post_id, PDO::PARAM_INT);

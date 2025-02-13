@@ -6,6 +6,7 @@ include_once 'components/side-menu.php';
 include_once 'components/top-header.php';
 include_once 'components/bottom-header.php';
 include_once 'components/color-switcher.php';
+
 ?>
 <!-- Contact Details section start -->
 <section class="pt-120 pb-120 mt-10 mt-lg-0">
@@ -15,29 +16,33 @@ include_once 'components/color-switcher.php';
         Contact
       </h3>
       <p class="fs-seven n5-color mb-4 mb-md-8 text-center">
-        Interested in hiring me for your project or just want to say hi?
+        Interested in hiring me 🤗 for your project or just want to say hi 😍?
         You can fill in the contact form below or send me an email to
-        <a href="#" class="p1-color">evans@yourwebsite.com</a> .Want to
+        <a href="mailto:<?= $webSetting['email'] ?: '' ?>" class="p1-color"><?= $webSetting['email'] ?: '' ?></a> .Want
+        to
         get connected? Follow me on the social channels below.
       </p>
       <div class="d-flex flex-wrap justify-content-center gap-2 align-items-center mt-4">
-        <a href="javascript:void(0)" class="social-icon">
+        <a href="<?= $webSetting['facebook'] ?: '' ?>" class="social-icon">
           <i class="ph ph-facebook-logo p1-color"></i>
         </a>
-        <a href="javascript:void(0)" class="social-icon">
+        <a href="<?= $webSetting['instagram'] ?: '' ?>" class="social-icon">
           <i class="ph ph-instagram-logo p1-color"></i>
         </a>
-        <a href="javascript:void(0)" class="social-icon">
+        <a href="<?= $webSetting['twitter'] ?: '' ?>" class="social-icon">
           <i class="ph ph-x-logo p1-color"></i>
         </a>
-        <a href="javascript:void(0)" class="social-icon">
+        <a href="<?= $webSetting['linkedIn'] ?: '' ?>" class="social-icon">
           <i class="ph ph-linkedin-logo p1-color"></i>
         </a>
-        <a href="javascript:void(0)" class="social-icon">
-          <i class="ph ph-stack-overflow-logo p1-color"></i>
+        <a href="<?= $getAboutMe['github_link'] ?: '' ?>" class="social-icon">
+          <i class="ph ph-github-logo p1-color"></i>
         </a>
-        <a href="javascript:void(0)" class="social-icon">
+        <a href="<?= $webSetting['youtube'] ?: '' ?>" class="social-icon">
           <i class="ph ph-youtube-logo p1-color"></i>
+        </a>
+        <a href="<?= $webSetting['whatsapp_url'] ?: '' ?>" class="social-icon">
+          <i class="ph ph-whatsapp-logo p1-color"></i>
         </a>
       </div>
     </div>
@@ -52,9 +57,8 @@ include_once 'components/color-switcher.php';
         </h2>
       </div>
       <p class="fs-seven n4-color mt-2 mt-md-4">
-        If you are going to use a passage of Lorem Ipsum, you need to be
-        sure there isn't anything embarrassing hidden in the middle of
-        text.
+        Need a professional web developer, UI/UX designer, or software expert for your next project? Whether it’s a
+        website, mobile app, e-commerce platform, or custom software, I’m ready to bring your vision to life.
       </p>
     </div>
 
@@ -64,21 +68,21 @@ include_once 'components/color-switcher.php';
         <i class="ph ph-device-mobile-camera p1-color fs-one"></i>
         <div>
           <span class="n5-color fs-five fw-semibold d-block mb-2">Phone</span>
-          <a href="tel:+6494461709" class="n4-color fs-nine">+123-456-7890</a>
+          <a href="tel:+6494461709" class="n4-color fs-nine"><?= $webSetting['phone'] ?: '' ?></a>
         </div>
       </div>
       <div class="d-flex gap-3 align-items-center p-3 p-md-5 br1-left">
         <i class="ph ph-compass p1-color fs-one"></i>
         <div>
           <span class="n5-color fs-five fw-semibold d-block mb-2">Location</span>
-          <span class="n4-color fs-nine">123 Example Street, City, Country</span>
+          <span class="n4-color fs-nine"><?= $webSetting['office_address'] ?: '' ?></span>
         </div>
       </div>
       <div class="d-flex gap-3 align-items-center p-3 p-md-5 br1-left">
         <i class="ph ph-envelope-open p1-color fs-one"></i>
         <div>
           <span class="n5-color fs-five fw-semibold d-block mb-2">Email</span>
-          <a href="mailto:someone@example.com" class="n4-color fs-nine">yourmail@domain.com</a>
+          <a href="mailto:someone@example.com" class="n4-color fs-nine"><?= $webSetting['email'] ?: '' ?></a>
         </div>
       </div>
     </div>
@@ -95,13 +99,11 @@ include_once 'components/color-switcher.php';
         <h2 class="display-four n5-color fw-semibold">Get In Touch</h2>
       </div>
       <p class="fs-seven n4-color mt-2 mt-md-4">
-        If you are going to use a passage of Lorem Ipsum, you need to be
-        sure there isn't anything embarrassing hidden in the middle of
-        text.
+        Looking for a web developer, UI/UX designer, or tech expert to bring your ideas to life? I’m here to help!
+        Whether you need a website, mobile app, e-commerce platform, or software solution, let’s make it happen.
       </p>
     </div>
-    <form data-aos="zoom-in" id="submitContact" class="mt-8 mt-md-15 p-5 p-md-10 rounded-5 brn4"
-      id="submitContact">
+    <form data-aos="zoom-in" id="submitContact" class="mt-8 mt-md-15 p-5 p-md-10 rounded-5 brn4" id="submitContact">
 
       <div id="alert">alert</div>
 
@@ -132,7 +134,8 @@ include_once 'components/color-switcher.php';
 
       <button id="submit_contact_btn"
         class="primary-btn fw-medium px-3 px-md-6 py-2 py-md-4 rounded-pill mt-5 mt-md-10">
-        <span class="spinner-border spinner-border-sm text-light contact_spinner me-2" role="status"></span> Send Message
+        <span class="spinner-border spinner-border-sm text-light contact_spinner me-2" role="status"></span> Send
+        Message
       </button>
     </form>
   </div>

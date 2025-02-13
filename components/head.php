@@ -1,5 +1,6 @@
 <?php
 require_once 'webadmin/classes/functions.php';
+$webSetting = $settings->getSettings('1', '0');
 $getAboutMe = $aboutMe->getAboutMe();
 $categories = $category->getCategoriesByStatus("categories", "0");
 $allPortfolios = $portfolio->getAllPortfolios();

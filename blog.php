@@ -44,7 +44,7 @@ include_once 'components/color-switcher.php';
                         <a href="blog-details.php?read=<?= $blogPost['slug'] ?>" class="blog-card">
                             <div class="blog-img rounded-3 overflow-hidden">
                                 <img src="assets/images/posts/<?= $blogPost['image'] ?>"
-                                    alt="<?= $blogPost['title'] ?? '' ?> | Victor Osaronwafor" class="rounded-3 w-100" />
+                                    alt="<?= $blogPost['title'] ?? '' ?> | Victor Osaronwafor Olvios" class="rounded-3 w-100" />
                             </div>
                             <div class="pt-4 pt-md-8 px-3 px-md-5">
                                 <div class="d-flex align-items-center gap-3 mb-2 mb-md-3">

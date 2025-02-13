@@ -101,7 +101,7 @@ $portfolio = $portfolio->getSinglePortfoById($portfolio_id);
                                 <div class="mb-3 row">
                                     <label class="col-sm-3 col-form-label">Description:</label>
                                     <div class="col-sm-9">
-                                        <textarea class="form-txtarea form-control" name="description"
+                                        <textarea class="form-txtarea form-control tiny" name="description"
                                             rows="8" placeholder="Description"><?= $portfolio['description'] ?? 'No Data' ?></textarea>
                                     </div>
                                 </div>

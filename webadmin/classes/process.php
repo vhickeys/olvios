@@ -178,7 +178,7 @@ if (isset($_GET['action'])) {
             break;
 
 
-        // Blog Post CRUD
+        // Blog Comment CRUD
 
         case 'create-comment':
             if (isset($_POST['post_id']) && isset($_POST['first_name']) && isset($_POST['last_name'])) {
@@ -189,6 +189,13 @@ if (isset($_GET['action'])) {
                 $message = $_POST['message'];
 
                 $blog->createComment($post_id, $first_name, $last_name, $email, $message);
+            }
+            break;
+
+        case 'delete-comment':
+            if (isset($_POST['delete-comment'])) {
+                $comment_id = $_POST['commentModalId'];
+                $blog->deleteComment($comment_id);
             }
             break;
 
@@ -418,6 +425,13 @@ if (isset($_GET['action'])) {
                     // Approve Payment Status i.e Set Status to 1
                     $transaction->updatePaymentStatus($payment_id, $user_id, "1");
                 }
+            }
+            break;
+
+        case 'delete-contact':
+            if (isset($_POST['delete-contact'])) {
+                $contact_id = $_POST['contactModalId'];
+                $contact->deleteContact($contact_id);
             }
             break;
 

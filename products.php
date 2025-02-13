@@ -70,13 +70,13 @@ include_once 'components/color-switcher.php';
                                             <div class="post-thumb">
                                                 <div class="post-thumb-inner">
                                                     <img src="assets/images/products/<?= $allProduct['image'] ?? '' ?>"
-                                                        alt="<?= $allProduct['name'] ?? '' ?> | Victor Osaronwafor" class="product-img w-100 p-2" />
+                                                        alt="<?= $allProduct['name'] ?? '' ?> | Victor Osaronwafor Olvios" class="product-img w-100 p-2" />
                                                 </div>
                                             </div>
                                             <div class="post-thumb">
                                                 <div class="post-thumb-inner">
                                                     <img src="assets/images/products/<?= $allProduct['image'] ?? '' ?>"
-                                                        alt="<?= $allProduct['name'] ?? '' ?> | Victor Osaronwafor" class="product-img w-100 p-2" />
+                                                        alt="<?= $allProduct['name'] ?? '' ?> | Victor Osaronwafor Olvios" class="product-img w-100 p-2" />
                                                 </div>
                                             </div>
                                         </a>
@@ -125,14 +125,14 @@ include_once 'components/color-switcher.php';
                                                 <div class="post-thumb">
                                                     <div class="post-thumb-inner">
                                                         <img src="assets/images/products/<?= $cat_product['image'] ?? '' ?>"
-                                                            alt="<?= $cat_product['name'] ?> | Victor Osaronwafor"
+                                                            alt="<?= $cat_product['name'] ?> | Victor Osaronwafor Olvios"
                                                             class="product-img w-100 p-2" />
                                                     </div>
                                                 </div>
                                                 <div class="post-thumb">
                                                     <div class="post-thumb-inner">
                                                         <img src="assets/images/products/<?= $cat_product['image'] ?? '' ?>"
-                                                            alt="<?= $cat_product['name'] ?> | Victor Osaronwafor"
+                                                            alt="<?= $cat_product['name'] ?> | Victor Osaronwafor Olvios"
                                                             class="product-img w-100 p-2" />
                                                     </div>
                                                 </div>

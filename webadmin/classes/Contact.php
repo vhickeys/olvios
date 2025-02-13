@@ -27,4 +27,30 @@ class Contact
             echo "failed";
         }
     }
+
+    public function getAllContacts()
+    {
+        $sql = "SELECT * FROM contacts ORDER BY id DESC";
+        $statement = $this->db->prepare($sql);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result ?: [];
+    }
+
+    public function deleteContact($contact_id)
+    {
+        $sql = "DELETE FROM contacts WHERE id=?";
+        $statement = $this->db->prepare($sql);
+        $statement->execute([$contact_id]);
+
+        if ($statement) {
+            $_SESSION['successMessage'] = "Contact Deleted Successfully!";
+            header("location: ../view-contacts.php");
+            exit(0);
+        } else {
+            $_SESSION['errorMessage'] = "Something Went Wrong!";
+            header("location: ../view-contacts.php");
+            exit(0);
+        }
+    }
 }

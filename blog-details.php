@@ -45,9 +45,9 @@ include_once 'components/color-switcher.php';
                     alt="<?= $blog_post_details['title'] ?? '' ?> | Victor Osaronwafor" class="blog-details-img" />
             </div>
 
-            <p class="details-description n5-color fs-eight">
+            <div class="details-description n5-color fs-eight">
                 <?= $blog_post_details['description'] ?? '' ?>
-            </p>
+            </div>
         </div>
 
         <?php if (!empty($blog_post_details['quote'])): ?>
@@ -68,11 +68,11 @@ include_once 'components/color-switcher.php';
         <div data-aos="fade-up" class="mb-8 mb-md-15">
             <h3 class="details-description n5-color fs-two">Video Example</h3>
             <p class="details-description n5-color fs-eight my-3 my-md-5">
-                Watch my Youtube tutorial on this for further explanation. Please don't forget to susbscribe ❤❤❤✔ to my
+                Watch my Youtube tutorial on this for further explanation. Please don't forget to susbscribe 🥰😍❤💝💘🖤🤎💚✔ to my
                 Youtube channel.
             </p>
             <div class="overflow-hidden position-relative">
-                <img src="assets/images/blog2.png" alt="..." class="blog-details-img" />
+                <img src="assets/images/blog2.png" alt="Victor Osaronwafor Olvios" class="blog-details-img" />
                 <div class="video-btn">
                     <a href="https://www.youtube.com/watch?v=AVHozwCteL4" class="glightbox3 display-two">
                         <i class="ph-fill ph-play-circle"></i>
@@ -145,7 +145,7 @@ include_once 'components/color-switcher.php';
                         class="prev-card d-flex gap-3 gap-md-6 align-items-center p-3 brn4 rounded-3">
                         <div class="overflow-hidden">
                             <img src="assets/images/posts/<?= $previousPost['image'] ?>"
-                                alt="<?= $previousPost['title'] ?? '' ?> | Victor Osaronwafor" class="prev-img" />
+                                alt="<?= $previousPost['title'] ?? '' ?> | Victor Osaronwafor Olvios" class="prev-img" />
                         </div>
                         <div>
                             <span class="d-flex gap-1 align-items-center p1-color">
@@ -164,7 +164,7 @@ include_once 'components/color-switcher.php';
                         class="next-card d-flex gap-3 gap-md-6 align-items-center p-3 brn4 rounded-3">
                         <div class="overflow-hidden">
                             <img src="assets/images/posts/<?= $nextPost['image'] ?>"
-                                alt="<?= $nextPost['title'] ?? '' ?> | Victor Osaronwafor" class="prev-img" />
+                                alt="<?= $nextPost['title'] ?? '' ?> | Victor Osaronwafor Olvios" class="prev-img" />
                         </div>
                         <div>
                             <span class="d-flex gap-1 align-items-center p1-color">

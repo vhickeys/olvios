@@ -291,6 +291,14 @@ function setActivePage1($currentPage, $linkPage)
         return '';
     }
 }
+function setActivePageMobile($currentPage, $linkPage)
+{
+    if ($currentPage === $linkPage) {
+        return 'rounded-3 bg1-color';
+    } else {
+        return '';
+    }
+}
 function setActivePage2($currentPage, $linkPage)
 {
     if ($currentPage === $linkPage) {

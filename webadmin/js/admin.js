@@ -256,6 +256,12 @@ $(document).ready(function () {
   // Delete Post
   confirmDelete("delete-post", "deletePostModal", "postModalId");
 
+  // Delete Comment
+  confirmDelete("delete-comment", "deleteCommentModal", "commentModalId");
+
+  // Delete Contact
+  confirmDelete("delete-contact", "deleteContactModal", "contactModalId");
+
   // Delete Work Experience
   confirmDelete("delete-work-exp", "deleteWorkExpModal", "workExpModalId");
 

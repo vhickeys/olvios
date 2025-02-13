@@ -28,7 +28,7 @@ include_once('components/head.php');
 
                                 <div class="card-body">
                                     <div class="logo-header text-center">
-                                        <a href="javascript:void(0)"><img src="../assets/images/settings/<?= $webSetting['logo'] ?? 'placeholder.png' ?>" class="img-fluid" width="40%" alt="Olvios Logo"></a>
+                                        <a href="javascript:void(0)"><img src="../assets/images/settings/<?= $webSetting['logo'] ?? 'logo.png' ?>" class="img-fluid" width="40%" alt="Victor Osaronwafor Olvios Logo"></a>
                                     </div>
 
                                     <nav>

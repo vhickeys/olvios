@@ -43,14 +43,24 @@ $work_exps = $aboutMe->getWorkExpByStatus();
                                 <i class="ph ph-phone"></i> 0123 4567 890</a>
                         </li>
                         <li>
-                            <a href="mailto:someone@example.com" class="d-flex gap-2 align-items-center n4-color">
-                                <i class="ph ph-envelope-simple"></i>Evans@yourwebsite.com</a>
+                            <a href="mailto:<?= $webSetting['email'] ?: '' ?>"
+                                class="d-flex gap-2 align-items-center n4-color">
+                                <i class="ph ph-envelope-simple"></i><?= $webSetting['email'] ?: '' ?></a>
                         </li>
                         <li class="d-flex gap-2 align-items-center n4-color">
-                            <i class="ph ph-globe"></i> www.yourwebsite.com
+                            <i class="ph ph-globe"></i>
+                            <?php
+                            $host = $_SERVER['HTTP_HOST'];
+                            if (strpos($host, 'www.') === false) {
+                                $host = 'www.' . $host;
+                            }
+                            echo $host;
+                            ?>
+
+
                         </li>
                         <li class="d-flex gap-2 align-items-center n4-color">
-                            <i class="ph ph-map-pin"></i> New York
+                            <i class="ph ph-map-pin"></i> <?= $webSetting['office_address'] ?: '' ?>
                         </li>
                     </ul>
                 </div>
@@ -187,23 +197,23 @@ $work_exps = $aboutMe->getWorkExpByStatus();
 
             <div
                 class="d-flex flex-wrap gap-2 gap-md-3 gap-md-5 align-items-center justify-content-center mt-4 mt-md-8">
-                <a href="javascript:void(0)" class="d-flex gap-1 align-items-center resume-icon">
+                <a href="<?= $getAboutMe['github_link'] ?: '' ?>" class="d-flex gap-1 align-items-center resume-icon">
                     <div class="social-icon">
                         <i class="ph ph-github-logo p1-color"></i>
                     </div>
-                    <span class="fs-nine n4-color">github.com/username</span>
+                    <span class="fs-nine n4-color"><?= $getAboutMe['github_link'] ?: '' ?></span>
                 </a>
-                <a href="javascript:void(0)" class="d-flex gap-1 align-items-center resume-icon">
+                <a href="<?= $webSetting['linkedIn'] ?: '' ?>" class="d-flex gap-1 align-items-center resume-icon">
                     <div class="social-icon">
                         <i class="ph ph-linkedin-logo p1-color"></i>
                     </div>
-                    <span class="fs-nine n4-color">linkedin.com/in/username</span>
+                    <span class="fs-nine n4-color">@victorosaronwafor</span>
                 </a>
-                <a href="javascript:void(0)" class="d-flex gap-1 align-items-center resume-icon">
+                <a href="<?= $webSetting['youtube'] ?: '' ?>" class="d-flex gap-1 align-items-center resume-icon">
                     <div class="social-icon">
-                        <i class="ph ph-x-logo p1-color"></i>
+                        <i class="ph ph-youtube-logo p1-color"></i>
                     </div>
-                    <span class="fs-nine n4-color">@twittername</span>
+                    <span class="fs-nine n4-color">youtube.com/c/gravicsdesigns</span>
                 </a>
             </div>
         </div>
